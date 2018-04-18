@@ -1,0 +1,49 @@
+<header class="primary">
+  <div class="firstbar">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3 col-sm-12">
+          <div class="brand">
+            <a href="index.html">
+              <img src="/assets/logo.png" alt="Logo Website">
+            </a>
+          </div>
+        </div>
+        <div class="col-md-6 col-sm-12">
+          <form class="search" autocomplete="off">
+            <div class="form-group">
+              <div class="input-group">
+                <input type="text" name="q" class="form-control" placeholder="Type something here">
+                <div class="input-group-btn">
+                  <button class="btn btn-primary"><i class="fa fa-search"></i></button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="col-md-3 col-sm-12 text-right">
+          <ul class="nav-icons">
+            <li><a href="register.html"><i class="fa fa-user-plus"></i><div>Đăng ký</div></a></li>
+            <li><a href="login.html"><i class="fa fa-user-secret"></i><div>Đăng nhập</div></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Start nav -->
+  <nav class="menu">
+    <div class="container">
+      <div id="menu-list">
+        <div class="row">
+          <div class="col-xs-12 col-md-6">
+            <%= render "layouts/left_header" %>
+          </div>
+          <div class="col-xs-12 col-md-6">
+          <%= render "layouts/right_header" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <!-- End nav -->
+</header>

@@ -1,0 +1,22 @@
+<aside>
+  <ul class="nav nav-tabs nav-justified" role="tablist">
+    <li class="active">
+      <a href="#new_review" aria-controls="recomended" role="tab" data-toggle="tab">
+        <i class="fa fa-star"></i> Bài đánh giá mới
+      </a>
+    </li>
+    <li>
+      <a href="#comments" aria-controls="comments" role="tab" data-toggle="tab">
+        <i class="fa fa-comments"></i> Các bình luận mới
+      </a>
+    </li>
+  </ul>
+  <div class="tab-content">
+    <div class="tab-pane active" id="new_review">
+    <%= render "new_review" %>
+    </div>
+    <div class="tab-pane comments" id="comments">
+    <%= render "new_comments" %>
+    </div>
+  </div>
+</aside>

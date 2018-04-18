@@ -1,14 +1,23 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>BookReviewSystem</title>
-    <%= csrf_meta_tags %>
+    <title><%= yield(:title) %> | Hệ thống đánh giá sách trực tuyến</title>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <%= stylesheet_link_tag 'public/application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'public/application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" %>
   </head>
 
-  <body>
+  <body class="skin-orange">
+    <%= render "layouts/header" %>
+    <%= render "layouts/flash_notify" %>
+
     <%= yield %>
+
+    <%= render "layouts/top4" %>
+    <%= render "layouts/footer" %>
   </body>
 </html>
