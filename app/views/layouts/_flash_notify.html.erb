@@ -1,0 +1,8 @@
+<div class="container" style="min-height: 189px;">
+  <% flash.each do |mesage_type, mesage| %>
+    <div class="alert alert-<%= mesage_type %> alert-dismissible fade in" style="padding-top: 189px;">
+      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+      <strong>Thông báo:     </strong><%= mesage %>
+    </div>
+  <% end %>
+</div>
