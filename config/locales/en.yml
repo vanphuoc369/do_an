@@ -31,3 +31,10 @@
 
 en:
   hello: "Hello world"
+  activerecord:
+    attributes:
+      user:
+        fullname: "Họ tên"
+        email: "Địa chỉ email"
+        password: "Mật khẩu"
+        password_confirmation: "Mật khẩu xác nhận"

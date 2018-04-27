@@ -1,36 +1,41 @@
 <ul class="nav-list float_right">
-  <li class="dropdown magz-dropdown magz-dropdown-megamenu"><a href="#"><i class="fa fa-bell"></i> <div class="badge">7</div></a>
-    <div class="dropdown-menu megamenu">
-      <div class="megamenu-inner">
-        <div class="row">
-          <article class="article-mini">
-            <div class="row">
-              <div class="col-xs-6 col-sm-3">
-                <a href="single.html">
-                  <img src="/assets/img_life_skills.jpg" alt="Ảnh đại diện" class="img_user">
-                </a>
-              </div>
-              <div class="col-xs-9 col-sm-9">
-                <h1><a href="single.html">Duis aute irure dolor in reprehenderit in voluptate velit</a></h1>
-                <div class="detail">
-                  <div class="category"><a href="category.html">Lifestyle</a></div>
-                  <div class="time">December 22, 2016</div>
+  <% if logged_in? %>
+    <li class="dropdown magz-dropdown magz-dropdown-megamenu"><a href="#"><i class="fa fa-bell"></i> <div class="badge">7</div></a>
+      <div class="dropdown-menu megamenu">
+        <div class="megamenu-inner">
+          <div class="row">
+            <article class="article-mini">
+              <div class="row">
+                <div class="col-xs-6 col-sm-3">
+                  <a href="single.html">
+                    <img src="/assets/img_life_skills.jpg" alt="Ảnh đại diện" class="img_user">
+                  </a>
+                </div>
+                <div class="col-xs-9 col-sm-9">
+                  <h1><a href="single.html">Duis aute irure dolor in reprehenderit in voluptate velit</a></h1>
+                  <div class="detail">
+                    <div class="category"><a href="category.html">Lifestyle</a></div>
+                    <div class="time">December 22, 2016</div>
+                  </div>
                 </div>
               </div>
-            </div>
-          </article>
+            </article>
+          </div>
         </div>
       </div>
-    </div>
-  </li>
-  <li class="dropdown magz-dropdown" style="float: right;"><a href="#">Full name<i class="fa fa-angle-down"></i></a>
-    <ul class="dropdown-menu">
-      <li><a href="#"><i class="icon ion-person"></i> Thông tin cá nhân</a></li>
-      <li><a href="#"><i class="icon ion-heart"></i> Sách yêu thích</a></li>
-      <li><a href="#"><i class="icon ion-chatbox"></i> Sách đã đánh dấu</a></li>
-      <li><a href="#"><i class="icon ion-key"></i> Thay đổi mật khẩu</a></li>
-      <li class="divider"></li>
-      <li><a href="#"><i class="icon ion-log-out"></i> Đăng xuất</a></li>
-    </ul>
-  </li>
+    </li>
+    <li class="dropdown magz-dropdown" style="float: right;"><a href="javascript:void(0)"><%= current_user.full_name %><i class="fa fa-angle-down"></i></a>
+      <ul class="dropdown-menu">
+        <li><a href="#"><i class="icon ion-person"></i> Thông tin cá nhân</a></li>
+        <li><a href="#"><i class="icon ion-heart"></i> Sách yêu thích</a></li>
+        <li><a href="#"><i class="icon ion-chatbox"></i> Sách đã đánh dấu</a></li>
+        <li><a href="#"><i class="icon ion-key"></i> Thay đổi mật khẩu</a></li>
+        <li class="divider"></li>
+        <li>
+          <%= link_to logout_path, method: :delete do %>
+              <i class="icon ion-log-out"></i> Đăng xuất
+          <% end %>
+      </ul>
+    </li>
+  <% end %>
 </ul>
