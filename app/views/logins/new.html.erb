@@ -1,0 +1,36 @@
+<% provide :title, "Đăng nhập" %>
+<div class="container">
+  <div class="box-wrapper">
+    <div class="box box-border">
+      <div class="box-body">
+        <h4>Đăng nhập</h4>
+
+        <%= form_for(:login, url: login_path) do |f| %>
+          <hr>
+
+          <div class="form-group">
+            <%= f.label :email, "Địa chỉ Email:" %>
+            <%= f.text_field :email, class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :password, "Mật khẩu:" %>
+            <%= f.password_field :password, class: "form-control" %>
+          </div>
+
+            <%= f.check_box :remember_me, class: "pull-left" %>
+            <span>Remember me</span>
+            <%= link_to "Quên mật khẩu ?", "#", class: "pull-right" %>
+
+            <div class="form-group text-right">
+              <%= f.submit "Đăng nhập", class: "btn btn-primary btn-block" %>
+            </div>
+
+            <div class="form-group text-center">
+              <span class="text-muted">Bạn chưa có tài khoản?</span>
+              <%= link_to "Tạo tài khoản", signup_path %>
+            </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
