@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+    before_action :load_user, only: :show
+
   def new
     @user = User.new
   end
@@ -22,5 +24,12 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit :full_name, :email, :password, :password_confirmation
+  end
+
+  def load_user
+    @user = User.find_by id: params[:id]
+    return if @user
+    flash[:danger] = "Không tìm thấy User"
+    redirect_to users_path
   end
 end

@@ -9,8 +9,9 @@ class User < ApplicationRecord
   validates :email, presence: {accept: true, message: "không được để trống"}, length: { maximum: 255, message: "không được vượt quá 255 ký tự" },
   format: { with: VALID_EMAIL_REGEX, message: "không đúng định dạng" },
   uniqueness: { case_sensitive: false, message: "đã được sử dụng để đăng ký tài khoản" }
-  has_secure_password
+  has_secure_password validations: false
   validates :password, length: {minimum: 6, message: "quá ngắn (tối thiểu 6 ký tự)"}, allow_nil: true
+  validates :password, presence: {accept: true, message: "không được để trống"}, confirmation:{accept: true, message: "không khớp"}
 
   scope :users_activated, ->{where("activated = true")}
   def activate
