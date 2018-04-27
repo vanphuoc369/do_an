@@ -34,7 +34,7 @@ en:
   activerecord:
     attributes:
       user:
-        fullname: "Họ tên"
+        full_name: "Họ tên"
         email: "Địa chỉ email"
         password: "Mật khẩu"
         password_confirmation: "Mật khẩu xác nhận"

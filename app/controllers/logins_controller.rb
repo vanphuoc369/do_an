@@ -18,7 +18,7 @@ class LoginsController < ApplicationController
         redirect_to root_url
       end
     else
-      flash.now[:danger] = "Đăng nhập không thành công"
+      flash.now[:danger] = "Sai tài khoản hoặc mật khẩu."
       render :new
     end
   end
