@@ -1,0 +1,16 @@
+<h4>Cập nhật thông tin</h4>
+<%= form_for @user, method: "patch" do |f| %>
+  <hr>
+
+  <div class="form-group">
+    <%= f.label :full_name, "Họ tên" %>
+    <%= f.text_field :full_name, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :email, "Địa chỉ Email" %>
+    <%= f.text_field :email, class: "form-control", disabled: true %>
+  </div>
+  <div class="form-group text-right">
+    <%= f.submit "Cập nhật", class: "btn btn-primary btn-block" %>
+  </div>
+<% end %>
