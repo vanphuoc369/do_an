@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-    before_action :load_user, only: :show
+    before_action :load_user, only: [:show, :update, :edit]
+    before_action :check_user_logged, only: :new
 
   def new
     @user = User.new
@@ -17,7 +18,22 @@ class UsersController < ApplicationController
   end
 
   def show
+  end
 
+  def update
+    if @user.full_name == params[:user][:full_name]
+      flash[:info] = "Bạn có thể cập nhật lại họ tên."
+      redirect_to @user
+    elsif @user.update_attribute(:full_name, params[:user][:full_name])
+      flash[:success] = "Cập nhật thông tin thành công!"
+      redirect_to @user
+    else
+      flash[:danger] = "Cập nhật không thành công, vui lòng kiểm tra lại thông tin cập nhật."
+      redirect_to user_path(params[:id])
+    end
+  end
+
+  def edit
   end
 
   private
@@ -30,6 +46,13 @@ class UsersController < ApplicationController
     @user = User.find_by id: params[:id]
     return if @user
     flash[:danger] = "Không tìm thấy User"
-    redirect_to users_path
+    redirect_to root_path
+  end
+
+  def check_user_logged
+    if logged_in?
+      flash[:warning] = "Bạn đang đăng nhập vào hệ thống"
+      redirect_to current_user
+    end
   end
 end

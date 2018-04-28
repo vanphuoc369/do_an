@@ -283,6 +283,7 @@ a {
 }
 a:hover, a:focus {
   color: #C8081C;
+  text-decoration: none;
 }
 a.facebook {
   background-color: #3b5998;
@@ -497,6 +498,7 @@ a.twitch {
 .pagination li.active a:hover, .pagination li.active a:focus {
   border-color: transparent;
   background-color: #F73F52;
+  text-decoration: none;
 }
 
 .pagination-help-text {
@@ -1745,7 +1747,7 @@ article footer .btn-primary:focus {
   padding: 5px 15px;
   display: inline-block;
   border-radius: 30px;
-  background-color: #fff;
+  background-color: #5cccb2;
   color: #000;
   text-decoration: none;
   transition: all .3s;
@@ -4169,3 +4171,8 @@ blockquote {
   float: right;
 }
 /*# sourceMappingURL=style.css.map */
+
+.activity_history {
+  padding-left: 9%;
+  padding-top: 18px;
+}

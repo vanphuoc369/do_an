@@ -1,4 +1,23 @@
-<% provide :title, "Show" %>
-  <div class="col-sm-5 text-center">
-    <%= gravatar_for @user %>
+<% provide :title, @user.full_name %>
+
+<div class="container">
+  <div class="col-xs-6 col-sm-3">
+    <div class="gravatar_for_user">
+      <%= gravatar_for @user %>
+      <article class="featured" style="height: 100px;">
+        <div class="details">
+          <div class="category">
+            <a href="https://en.gravatar.com/emails" target="_blank" class="btn btn-magz white btn-block">
+              Cập nhật ảnh đại diện
+            </a>
+          </div>
+        </div>
+      </article>
+    </div>
   </div>
+  <div class="col-xs-12 col-sm-9" id="show_info">
+    <%= render "info_user" %>
+  </div>
+</div>
+
+

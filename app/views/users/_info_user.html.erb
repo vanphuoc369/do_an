@@ -1,0 +1,14 @@
+<h2><%= @user.full_name %></h2>
+<%= @user.email %>
+<div style="float: right;">
+  <% if current_user? @user %>
+    <%= link_to "Cập nhật thông tin cá nhân", edit_user_path(current_user.id), method: :get, remote: true %>
+  <% end %>
+</div>
+<hr>
+<h6>Nhật ký hoạt động</h6>
+<div class="activity_history">
+  <span><%= @user.full_name %></span> nội dung hoạt động
+  <p>thoi gian hoat dong xay ra</p>
+  <hr>
+</div>

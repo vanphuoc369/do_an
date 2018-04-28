@@ -26,10 +26,13 @@
     </li>
     <li class="dropdown magz-dropdown" style="float: right;"><a href="javascript:void(0)"><%= current_user.full_name %><i class="fa fa-angle-down"></i></a>
       <ul class="dropdown-menu">
-        <li><a href="#"><i class="icon ion-person"></i> Thông tin cá nhân</a></li>
+        <li>
+          <%= link_to user_path(current_user.id), method: :get do %>
+              <i class="icon ion-person"></i> Thông tin cá nhân
+          <% end %>
+        </li>
         <li><a href="#"><i class="icon ion-heart"></i> Sách yêu thích</a></li>
         <li><a href="#"><i class="icon ion-chatbox"></i> Sách đã đánh dấu</a></li>
-        <li><a href="#"><i class="icon ion-key"></i> Thay đổi mật khẩu</a></li>
         <li class="divider"></li>
         <li>
           <%= link_to logout_path, method: :delete do %>
