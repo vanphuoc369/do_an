@@ -1,0 +1,41 @@
+<% provide(:title, "Cập nhật mật khẩu") %>
+
+<div class="container">
+  <div class="box-wrapper">
+    <div class="box box-border">
+      <div class="box-body">
+        <h4>Thiết lập lại mật khẩu</h4>
+        <%= form_for(@user, url: password_path(params[:id])) do |f| %>
+          <hr>
+
+          <% if @user.errors.any? %>
+            <div class="error_explanation">
+              <div class="alert alert-danger">
+                <%= "#{"Số thông báo lỗi: "}#{pluralize(@user.errors.count, "")}" %>
+              </div>
+              <ul>
+                <% @user.errors.full_messages.each do |msg| %>
+                  <li><%= "#{msg}" %></li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
+
+
+          <%= hidden_field_tag :email, @user.email %>
+          <div class="form-group">
+            <%= f.label :password, "Mật khẩu mới" %>
+            <%= f.password_field :password, class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :password_confirmation, "Xác nhận mật khẩu" %>
+            <%= f.password_field :password_confirmation, class: "form-control" %>
+          </div>
+          <div class="form-group text-right">
+            <%= f.submit "Cập nhật mật khẩu", class: "btn btn-primary btn-block" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

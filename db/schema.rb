@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 20180427084956) do
     t.bigint "user_id"
     t.string "title"
     t.string "author"
-    t.integer "status"
+    t.integer "status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_buy_requests_on_user_id"
@@ -66,7 +66,7 @@ ActiveRecord::Schema.define(version: 20180427084956) do
   create_table "notifications", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.bigint "user_id"
     t.bigint "activity_id"
-    t.boolean "is_see"
+    t.boolean "is_see", default: false
     t.string "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -89,7 +89,7 @@ ActiveRecord::Schema.define(version: 20180427084956) do
     t.bigint "user_id"
     t.bigint "book_id"
     t.boolean "is_favorite"
-    t.integer "status"
+    t.integer "status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["book_id"], name: "index_user_books_on_book_id"
