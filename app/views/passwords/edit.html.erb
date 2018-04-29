@@ -1,6 +1,3 @@
-<% provide(:title, "Thiết lập lại mật khẩu") %>
-<h1>Reset password</h1>
-
 <% provide(:title, "Cập nhật mật khẩu") %>
 
 <div class="container">
@@ -10,12 +7,24 @@
         <h4>Thiết lập lại mật khẩu</h4>
         <%= form_for(@user, url: password_path(params[:id])) do |f| %>
           <hr>
-          <%= render 'shared/error_messages' %>
+
+          <% if @user.errors.any? %>
+            <div class="error_explanation">
+              <div class="alert alert-danger">
+                <%= "#{"Số thông báo lỗi: "}#{pluralize(@user.errors.count, "")}" %>
+              </div>
+              <ul>
+                <% @user.errors.full_messages.each do |msg| %>
+                  <li><%= "#{msg}" %></li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
 
           <%= hidden_field_tag :email, @user.email %>
           <div class="form-group">
             <%= f.label :password, "Mật khẩu mới" %>
-            <%= f.text_field :password, class: "form-control" %>
+            <%= f.password_field :password, class: "form-control" %>
           </div>
           <div class="form-group">
             <%= f.label :password_confirmation, "Xác nhận mật khẩu" %>

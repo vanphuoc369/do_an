@@ -7,8 +7,6 @@ class UserMailer < ApplicationMailer
 
   def password_reset(user)
     @user = user
-
-    debugger
     mail to: user.email, subject: "Thiết lập lại mật khẩu"
   end
 end
