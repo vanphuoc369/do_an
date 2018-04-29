@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   delete "/logout", to: "logins#destroy"
   resources :users, except: [:destroy, :index]
   resources :account_activations, only: [:edit]
+  resources :passwords, only: [:new, :create, :edit, :update]
 
   namespace :admin do
     root "static_pages#index"

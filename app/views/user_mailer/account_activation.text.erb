@@ -1,9 +1,5 @@
-<h1>Hệ thống đánh giá sách văn học</h1>
+Hi <%= @user.full_name %>,
 
-<p>Chào <%= @user.full_name %>,</p>
+Welcome to the Sample App! Click on the link below to activate your account:
 
-<p>
-Chào mừng bạn đến với Hệ thống đánh gía sách văn học! Clink vào link bên dưới để kích hoạt tài khoản:
-</p>
-
-<%= link_to "Kích hoạt tài khoản", edit_account_activation_url(@user.activation_token, email: @user.email) %>
+<%= edit_account_activation_url(@user.activation_token, email: @user.email) %>
