@@ -27,7 +27,6 @@ class PasswordsController < ApplicationController
       else
         send_require_reset_pass
       end
-
     else
       flash.now[:danger] = "Không tìm thấy địa chỉ Email"
       render :new
