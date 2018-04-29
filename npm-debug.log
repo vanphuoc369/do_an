@@ -1,0 +1,191 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/bin/node', '/usr/bin/npm', 'install', 'yarn', '-g' ]
+2 info using npm@2.15.11
+3 info using node@v4.9.1
+4 verbose install initial load of /usr/lib/package.json
+5 verbose readDependencies loading dependencies from /usr/lib/package.json
+6 silly cache add args [ 'yarn', null ]
+7 verbose cache add spec yarn
+8 silly cache add parsed spec Result {
+8 silly cache add   raw: 'yarn',
+8 silly cache add   scope: null,
+8 silly cache add   name: 'yarn',
+8 silly cache add   rawSpec: '',
+8 silly cache add   spec: 'latest',
+8 silly cache add   type: 'tag' }
+9 silly addNamed yarn@latest
+10 verbose addNamed "latest" is being treated as a dist-tag for yarn
+11 info addNameTag [ 'yarn', 'latest' ]
+12 silly mapToRegistry name yarn
+13 silly mapToRegistry using default registry
+14 silly mapToRegistry registry https://registry.npmjs.org/
+15 silly mapToRegistry data Result {
+15 silly mapToRegistry   raw: 'yarn',
+15 silly mapToRegistry   scope: null,
+15 silly mapToRegistry   name: 'yarn',
+15 silly mapToRegistry   rawSpec: '',
+15 silly mapToRegistry   spec: 'latest',
+15 silly mapToRegistry   type: 'tag' }
+16 silly mapToRegistry uri https://registry.npmjs.org/yarn
+17 verbose addNameTag registry:https://registry.npmjs.org/yarn not in flight; fetching
+18 verbose request uri https://registry.npmjs.org/yarn
+19 verbose request no auth needed
+20 info attempt registry request try #1 at 11:08:24 AM
+21 verbose request id 3a2db36d5f7ca506
+22 http request GET https://registry.npmjs.org/yarn
+23 http 200 https://registry.npmjs.org/yarn
+24 verbose headers { 'content-type': 'application/json; charset=UTF-8',
+24 verbose headers   server: 'UploadServer',
+24 verbose headers   'cache-control': 'max-age=300',
+24 verbose headers   'last-modified': 'Sun, 15 Apr 2018 13:30:05 GMT',
+24 verbose headers   etag: '"5ad353dd-35d60"',
+24 verbose headers   'x-npm-region': 'Asia',
+24 verbose headers   'content-encoding': 'gzip',
+24 verbose headers   'content-length': '13030',
+24 verbose headers   'accept-ranges': 'bytes',
+24 verbose headers   date: 'Sun, 29 Apr 2018 04:08:24 GMT',
+24 verbose headers   via: '1.1 varnish',
+24 verbose headers   age: '3803',
+24 verbose headers   connection: 'keep-alive',
+24 verbose headers   'x-served-by': 'cache-hnd18737-HND',
+24 verbose headers   'x-cache': 'HIT',
+24 verbose headers   'x-cache-hits': '1',
+24 verbose headers   'x-timer': 'S1524974905.692926,VS0,VE1',
+24 verbose headers   vary: 'Accept-Encoding, Accept' }
+25 silly get cb [ 200,
+25 silly get   { 'content-type': 'application/json; charset=UTF-8',
+25 silly get     server: 'UploadServer',
+25 silly get     'cache-control': 'max-age=300',
+25 silly get     'last-modified': 'Sun, 15 Apr 2018 13:30:05 GMT',
+25 silly get     etag: '"5ad353dd-35d60"',
+25 silly get     'x-npm-region': 'Asia',
+25 silly get     'content-encoding': 'gzip',
+25 silly get     'content-length': '13030',
+25 silly get     'accept-ranges': 'bytes',
+25 silly get     date: 'Sun, 29 Apr 2018 04:08:24 GMT',
+25 silly get     via: '1.1 varnish',
+25 silly get     age: '3803',
+25 silly get     connection: 'keep-alive',
+25 silly get     'x-served-by': 'cache-hnd18737-HND',
+25 silly get     'x-cache': 'HIT',
+25 silly get     'x-cache-hits': '1',
+25 silly get     'x-timer': 'S1524974905.692926,VS0,VE1',
+25 silly get     vary: 'Accept-Encoding, Accept' } ]
+26 verbose get saving yarn to /home/zick/.npm/registry.npmjs.org/yarn/.cache.json
+27 verbose correctMkdir /home/zick/.npm correctMkdir not in flight; initializing
+28 verbose makeDirectory /home/zick/.npm creation not in flight; initializing
+29 silly makeDirectory /home/zick/.npm uid: 1000 gid: 1000
+30 silly addNameTag next cb for yarn with tag latest
+31 silly addNamed yarn@1.6.0
+32 verbose addNamed "1.6.0" is a plain semver version for yarn
+33 silly mapToRegistry name yarn
+34 silly mapToRegistry using default registry
+35 silly mapToRegistry registry https://registry.npmjs.org/
+36 silly mapToRegistry data Result {
+36 silly mapToRegistry   raw: 'yarn',
+36 silly mapToRegistry   scope: null,
+36 silly mapToRegistry   name: 'yarn',
+36 silly mapToRegistry   rawSpec: '',
+36 silly mapToRegistry   spec: 'latest',
+36 silly mapToRegistry   type: 'tag' }
+37 silly mapToRegistry uri https://registry.npmjs.org/yarn
+38 verbose addRemoteTarball https://registry.npmjs.org/yarn/-/yarn-1.6.0.tgz not in flight; adding
+39 verbose addRemoteTarball [ 'https://registry.npmjs.org/yarn/-/yarn-1.6.0.tgz',
+39 verbose addRemoteTarball   '9cec6f7986dc237d39ec705ce74d95155fe55d4b' ]
+40 info retry fetch attempt 1 at 11:08:24 AM
+41 info attempt registry request try #1 at 11:08:24 AM
+42 http fetch GET https://registry.npmjs.org/yarn/-/yarn-1.6.0.tgz
+43 http fetch 200 https://registry.npmjs.org/yarn/-/yarn-1.6.0.tgz
+44 silly fetchAndShaCheck shasum 9cec6f7986dc237d39ec705ce74d95155fe55d4b
+45 verbose addTmpTarball /tmp/npm-13088-c3fd7022/registry.npmjs.org/yarn/-/yarn-1.6.0.tgz not in flight; adding
+46 verbose addTmpTarball already have metadata; skipping unpack for yarn@1.6.0
+47 verbose correctMkdir /home/zick/.npm correctMkdir not in flight; initializing
+48 silly cache afterAdd yarn@1.6.0
+49 verbose afterAdd /home/zick/.npm/yarn/1.6.0/package/package.json not in flight; writing
+50 verbose correctMkdir /home/zick/.npm correctMkdir not in flight; initializing
+51 verbose afterAdd /home/zick/.npm/yarn/1.6.0/package/package.json written
+52 silly install resolved [ { name: 'yarn',
+52 silly install resolved     installationMethod: 'tar',
+52 silly install resolved     version: '1.6.0',
+52 silly install resolved     license: 'BSD-2-Clause',
+52 silly install resolved     preferGlobal: true,
+52 silly install resolved     description: '📦🐈 Fast, reliable, and secure dependency management.',
+52 silly install resolved     engines: { node: '>=4.0.0' },
+52 silly install resolved     repository: { type: 'git', url: 'git+https://github.com/yarnpkg/yarn.git' },
+52 silly install resolved     bin: { yarn: './bin/yarn.js', yarnpkg: './bin/yarn.js' },
+52 silly install resolved     config: { commitizen: [Object] },
+52 silly install resolved     readme: '<p align="center">\n  <a href="https://yarnpkg.com/">\n    <img alt="Yarn" src="https://github.com/yarnpkg/assets/blob/master/yarn-kitten-full.png?raw=true" width="546">\n  </a>\n</p>\n\n<p align="center">\n  Fast, reliable, and secure dependency management.\n</p>\n\n<p align="center">\n  <a href="https://circleci.com/gh/yarnpkg/yarn"><img alt="Circle Status" src="https://circleci.com/gh/yarnpkg/yarn.svg?style=shield&circle-token=5f0a78473b0f440afb218bf2b82323cc6b3cb43f"></a>\n  <a href="https://ci.appveyor.com/project/kittens/yarn/branch/master"><img alt="Appveyor Status" src="https://ci.appveyor.com/api/projects/status/0xdv8chwe2kmk463?svg=true"></a>\n  <a href="https://discord.gg/yarnpkg"><img alt="Discord Chat" src="https://img.shields.io/discord/226791405589233664.svg"></a>\n  <a href="http://commitizen.github.io/cz-cli/"><img alt="Commitizen friendly" src="https://img.shields.io/badge/commitizen-friendly-brightgreen.svg"></a>\n</p>\n\n---\n\n**Fast:** Yarn caches every package it has downloaded, so it never needs to download the same package again. It also does almost everything concurrently to maximize resource utilization. This means even faster installs.\n\n**Reliable:** Using a detailed but concise lockfile format and a deterministic algorithm for install operations, Yarn is able to guarantee that any installation that works on one system will work exactly the same on another system.\n\n**Secure:** Yarn uses checksums to verify the integrity of every installed package before its code is executed.\n\n## Features\n\n* **Offline Mode.** If you\'ve installed a package before, then you can install it again without an internet connection.\n* **Deterministic.** The same dependencies will be installed in the same exact way on any machine, regardless of installation order.\n* **Network Performance.** Yarn efficiently queues requests and avoids request waterfalls in order to maximize network utilization.\n* **Network Resilience.** A single request that fails will not cause the entire installation to fail. Requests are automatically retried upon failure.\n* **Flat Mode.** Yarn resolves mismatched versions of dependencies to a single version to avoid creating duplicates.\n* **More emojis.** 🐈\n\n## Installing Yarn\n\nRead the [Installation Guide](https://yarnpkg.com/en/docs/install) on our website for detailed instructions on how to install Yarn.\n\n## Using Yarn\n\nRead the [Usage Guide](https://yarnpkg.com/en/docs/usage) on our website for detailed instructions on how to use Yarn.\n\n## Contributing to Yarn\n\nContributions are always welcome, no matter how large or small. Substantial feature requests should be proposed as an [RFC](https://github.com/yarnpkg/rfcs). Before contributing, please read the [code of conduct](CODE_OF_CONDUCT.md).\n\nSee [Contributing](https://yarnpkg.com/org/contributing/).\n\n## Prior art\n\nYarn wouldn\'t exist if it wasn\'t for excellent prior art. Yarn has been inspired by the following projects:\n\n - [Bundler](https://github.com/bundler/bundler)\n - [Cargo](https://github.com/rust-lang/cargo)\n - [npm](https://github.com/npm/npm)\n\n## Credits\n\nThanks to [Sam Holmes](https://github.com/samholmes) for donating the npm package name!\n',
+52 silly install resolved     readmeFilename: 'README.md',
+52 silly install resolved     bugs: { url: 'https://github.com/yarnpkg/yarn/issues' },
+52 silly install resolved     homepage: 'https://github.com/yarnpkg/yarn#readme',
+52 silly install resolved     _id: 'yarn@1.6.0',
+52 silly install resolved     _shasum: '9cec6f7986dc237d39ec705ce74d95155fe55d4b',
+52 silly install resolved     _resolved: 'https://registry.npmjs.org/yarn/-/yarn-1.6.0.tgz',
+52 silly install resolved     _from: 'yarn@latest',
+52 silly install resolved     _npmVersion: '4.6.1',
+52 silly install resolved     _nodeVersion: '8.6.0',
+52 silly install resolved     _npmUser: { name: 'sebmck', email: 'sebmck@gmail.com' },
+52 silly install resolved     dist:
+52 silly install resolved      { shasum: '9cec6f7986dc237d39ec705ce74d95155fe55d4b',
+52 silly install resolved        tarball: 'https://registry.npmjs.org/yarn/-/yarn-1.6.0.tgz',
+52 silly install resolved        fileCount: 12,
+52 silly install resolved        unpackedSize: 4339720 },
+52 silly install resolved     maintainers: [ [Object], [Object], [Object], [Object], [Object], [Object] ],
+52 silly install resolved     directories: {},
+52 silly install resolved     _npmOperationalInternal:
+52 silly install resolved      { host: 's3://npm-registry-packages',
+52 silly install resolved        tmp: 'tmp/yarn_1.6.0_1523467262913_0.21197974457023516' } } ]
+53 info install yarn@1.6.0 into /usr/lib
+54 info installOne yarn@1.6.0
+55 verbose installOne of yarn to /usr/lib not in flight; installing
+56 verbose correctMkdir /home/zick/.npm/_locks correctMkdir not in flight; initializing
+57 verbose makeDirectory /home/zick/.npm/_locks creation not in flight; initializing
+58 silly makeDirectory /home/zick/.npm/_locks uid: 1000 gid: 1000
+59 verbose lock using /home/zick/.npm/_locks/yarn-2c7ecc5d16f3d756.lock for /usr/lib/node_modules/yarn
+60 silly install write writing yarn 1.6.0 to /usr/lib/node_modules/yarn
+61 verbose unbuild lib/node_modules/yarn
+62 silly gentlyRm /usr/lib/node_modules/yarn is being purged from base /usr
+63 verbose gentlyRm don't care about contents; nuking /usr/lib/node_modules/yarn
+64 verbose tar unpack /home/zick/.npm/yarn/1.6.0/package.tgz
+65 verbose tar unpacking to /usr/lib/node_modules/yarn
+66 silly gentlyRm /usr/lib/node_modules/yarn is being purged
+67 verbose gentlyRm don't care about contents; nuking /usr/lib/node_modules/yarn
+68 silly gunzTarPerm modes [ '775', '664' ]
+69 error tar.unpack untar error /home/zick/.npm/yarn/1.6.0/package.tgz
+70 verbose unlock done using /home/zick/.npm/_locks/yarn-2c7ecc5d16f3d756.lock for /usr/lib/node_modules/yarn
+71 verbose fstream_path /usr/lib/node_modules/yarn
+72 verbose fstream_type Directory
+73 verbose fstream_class DirWriter
+74 verbose stack Error: EACCES: permission denied, mkdir '/usr/lib/node_modules/yarn'
+74 verbose stack     at Error (native)
+75 verbose fstream_stack /usr/lib/node_modules/npm/node_modules/fstream/lib/dir-writer.js:35:25
+75 verbose fstream_stack /usr/lib/node_modules/npm/node_modules/mkdirp/index.js:47:53
+75 verbose fstream_stack FSReqWrap.oncomplete (fs.js:82:15)
+76 verbose cwd /media/zick/ZICK/Ky10/DATN/Code/do_an
+77 error Linux 4.13.0-39-generic
+78 error argv "/usr/bin/node" "/usr/bin/npm" "install" "yarn" "-g"
+79 error node v4.9.1
+80 error npm  v2.15.11
+81 error path /usr/lib/node_modules/yarn
+82 error code EACCES
+83 error errno -13
+84 error syscall mkdir
+85 error Error: EACCES: permission denied, mkdir '/usr/lib/node_modules/yarn'
+85 error     at Error (native)
+85 error  { [Error: EACCES: permission denied, mkdir '/usr/lib/node_modules/yarn']
+85 error   errno: -13,
+85 error   code: 'EACCES',
+85 error   syscall: 'mkdir',
+85 error   path: '/usr/lib/node_modules/yarn',
+85 error   fstream_type: 'Directory',
+85 error   fstream_path: '/usr/lib/node_modules/yarn',
+85 error   fstream_class: 'DirWriter',
+85 error   fstream_stack:
+85 error    [ '/usr/lib/node_modules/npm/node_modules/fstream/lib/dir-writer.js:35:25',
+85 error      '/usr/lib/node_modules/npm/node_modules/mkdirp/index.js:47:53',
+85 error      'FSReqWrap.oncomplete (fs.js:82:15)' ] }
+86 error Please try running this command again as root/Administrator.
+87 verbose exit [ -13, true ]
+88 verbose unbuild lib/node_modules/yarn
+89 silly gentlyRm /usr/lib/node_modules/yarn is being purged from base /usr
+90 verbose gentlyRm don't care about contents; nuking /usr/lib/node_modules/yarn
