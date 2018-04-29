@@ -8,15 +8,16 @@ class PasswordsController < ApplicationController
 
   def create
     @user = User.find_by(email: params[:password][:email].downcase)
-    debugger
-    if @user.reset_send_at > 6.hours.ago
-      flash.now[:danger] = "Bạn đã gửi yêu cầu gần đây, vui lòng kiểm tra Email hoặc gửi lại yêu cầu sau 6 tiếng."
-      render :new
-    elsif @user
-      @user.create_reset_digest
-      @user.send_password_reset_email
-      flash[:success] = "Thông tin đã được gửi đến Email của bạn. Vui lòng kiểm tra Email trong vòng 6 giờ để thiết lập lại mật khẩu."
-      redirect_to root_url
+    if @user
+      if @user.reset_send_at > 6.hours.ago
+        flash.now[:danger] = "Bạn đã gửi yêu cầu gần đây, vui lòng kiểm tra Email hoặc gửi lại yêu cầu sau 6 tiếng."
+        render :new
+      else
+        @user.create_reset_digest
+        @user.send_password_reset_email
+        flash[:success] = "Thông tin đã được gửi đến Email của bạn. Vui lòng kiểm tra Email trong vòng 6 giờ để thiết lập lại mật khẩu."
+        redirect_to root_url
+      end
     else
       flash.now[:danger] = "Không tìm thấy địa chỉ Email"
       render :new
