@@ -62,6 +62,9 @@ class User < ApplicationRecord
     reset_send_at < 6.hours.ago
   end
 
+  def set_nil_for_reset_send_at
+    update_attribute(:reset_send_at, nil)
+  end
   private
 
   def downcase_email

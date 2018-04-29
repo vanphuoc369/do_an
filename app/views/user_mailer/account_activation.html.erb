@@ -3,7 +3,7 @@
 <p>Chào <%= @user.full_name %>,</p>
 
 <p>
-Chào mừng bạn đến với Hệ thống đánh gía sách văn học! Clink vào link bên dưới để kích hoạt tài khoản:
+Chào mừng bạn đến với Hệ thống đánh giá sách kỹ năng sống trực tuyến! Nhấn vào liên kết bên dưới để kích hoạt tài khoản:
 </p>
 
 <%= link_to "Kích hoạt tài khoản", edit_account_activation_url(@user.activation_token, email: @user.email) %>
