@@ -1,0 +1,44 @@
+<% if not @title_index.nil? %>
+  <% provide :title, @title_index %>
+<% end %>
+
+<div class="container">
+  <div class="line top">
+    <div>Danh sách các cuốn sách</div>
+  </div>
+
+  <div class="col-md-10 col-md-offset-1">
+    <div class="row">
+      <% if @books.any? %>
+        <% @books.each do |book| %>
+          <article class="col-md-12 article-list">
+            <div class="inner">
+              <figure>
+                    <%= link_to book_path(book.id) do %>
+                      <%= image_tag book.image, class: "book_cover", alt: "#{book.title}" %>
+                    <% end %>
+              </figure>
+              <div class="details">
+                <div class="detail">
+                  <div class="category">
+                    <a href="javascript:void(0)">Ngày xuất bản:</a>
+                  </div>
+                  <div class="time"><%= book.publish_date %></div>
+                </div>
+                <h1><%=link_to book.title, book_path(book.id) %></h1>
+                <p><span class="text_title">Tác giả: </span><%= book.author %></p>
+                <p><span class="text_title">Tóm tắt: </span><%= book.summary %></p>
+                <footer>
+                  <a href="#" class="love" title="Thích"><i class="fa fa-heart"></i><div>273</div></a>
+                </footer>
+              </div>
+            </div>
+          </article>
+        <% end %>
+        <%= will_paginate @list_books, id: "paginate" %>
+      <% else %>
+        <h6 class="text_title" style="text-align: center;">Không tìm thấy sách</h6>
+      <% end %>
+    </div>
+  </div>
+</div>
