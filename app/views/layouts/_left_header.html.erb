@@ -1,72 +1,35 @@
 <ul class="nav-list">
-  <li><a href="#"><i class="fa fa-home"></i></a></li>
-  <li><a href="#">Giới thiệu Website</a></li>
-  <li class="dropdown magz-dropdown magz-dropdown-megamenu"><a href="#">Lựa chọn nhanh <i class="fa fa-angle-down"></i></a>
+  <li>
+    <%= link_to root_path do %>
+      <i class="fa fa-home"></i></a>
+    <% end %>
+  </li>
+  <li><a href="#">Giới thiệu</a></li>
+
+  <li class="dropdown magz-dropdown magz-dropdown-megamenu">
+    <a href="#">Tùy chọn nhanh <div class="badge">Top</div>
+      <i class="fa fa-angle-down"></i>
+    </a>
     <div class="dropdown-menu megamenu">
       <div class="megamenu-inner">
         <div class="row">
-          <div class="container" style="width: 100%;">
-            <a href="#">
-              <h2 class="megamenu-title">Xem tất cả các cuốn sách</h2>
-            </a>
-            <div class="row">
-              <div class="col-md-12">
-                <h2 class="megamenu-title">Các cuốn sách được yêu thích nhất</h2>
-              </div>
-            </div>
-            <div class="row">
-              <article class="article col-md-3 mini">
-                <a href="">
-                  <div class="inner">
-                    <figure>
-                      <img src="assets/goc-nhin-cua-nguoi-thong-thai.jpg" alt="Ảnh bìa">
-                    </figure>
-                    <div class="padding">
-                      <p style="font-size: 12px; text-align: center;">Tieu de sach</p>
-                    </div>
-                  </div>
-                </a>
-              </article>
-              <article class="article col-md-3 mini">
-                <a href="">
-                  <div class="inner">
-                    <figure>
-                      <img src="assets/goc-nhin-cua-nguoi-thong-thai.jpg" alt="Ảnh bìa">
-                    </figure>
-                    <div class="padding">
-                      <p style="font-size: 12px; text-align: center;">Tieu de sach</p>
-                    </div>
-                  </div>
-                </a>
-              </article>              <article class="article col-md-3 mini">
-                <a href="">
-                  <div class="inner">
-                    <figure>
-                      <img src="assets/goc-nhin-cua-nguoi-thong-thai.jpg" alt="Ảnh bìa">
-                    </figure>
-                    <div class="padding">
-                      <p style="font-size: 12px; text-align: center;">Tieu de sach</p>
-                    </div>
-                  </div>
-                </a>
-              </article>              <article class="article col-md-3 mini">
-                <a href="">
-                  <div class="inner">
-                    <figure>
-                      <img src="assets/goc-nhin-cua-nguoi-thong-thai.jpg" alt="Ảnh bìa">
-                    </figure>
-                    <div class="padding">
-                      <p style="font-size: 12px; text-align: center;">Tieu de sach</p>
-                    </div>
-                  </div>
-                </a>
-              </article>
-            </div>
+          <div class="col-md-8 col-md-offset-2">
+            <ul class="vertical-menu">
+              <li><a href="#">Những cuốn sách được yêu thích nhất</a></li>
+              <li><a href="#">Sách mới được thêm vào hệ thống</a></li>
+              <li><a href="#">Những cuốn sách được đọc nhiều</a></li>
+              <li>
+                <%=link_to books_path do %>
+                  Xem tất cả sách
+                <% end %>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
     </div>
   </li>
+
   <li class="dropdown magz-dropdown">
     <a href="#">Trợ giúp <i class="fa fa-angle-down"></i></a>
     <ul class="dropdown-menu">
