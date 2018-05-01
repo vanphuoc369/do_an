@@ -88,7 +88,7 @@ ActiveRecord::Schema.define(version: 20180427084956) do
   create_table "user_books", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.bigint "user_id"
     t.bigint "book_id"
-    t.boolean "is_favorite"
+    t.boolean "is_favorite", default: false
     t.integer "status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

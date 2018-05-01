@@ -1,3 +1,47 @@
+.btn_mark{
+  border: none;
+  background-color: #fff;
+  margin-right: 9px;
+}
+.fa.fa-heart{
+  font-size: 23px;
+}
+.fa.fa-eye{
+  font-size: 23px;
+}
+.fa.fa-check-circle{
+  font-size: 23px;
+}
+.text_notify_mark{
+  color: blue;
+}
+.icon_not_mark{
+  color: wheat;
+}
+.icon_markno_mark{
+  color: wheat;
+}
+.icon_markfalse{
+  color: wheat;
+}
+.notify_not_mark,.alert-success{
+  font-size: 12px;
+}
+.fa.fa-heart.icon_marktrue{
+  color: red;
+}
+.fa.fa-eye.icon_markreading{
+  color: #73f1eb;
+}
+.fa.fa-eye.icon_markread{
+  color: wheat;
+}
+.fa.fa-check-circle.icon_markread{
+ color: green;
+}
+.fa.fa-check-circle.icon_markreading{
+ color: wheat;
+}
 /*
  * Import Fonts
  *
@@ -2217,6 +2261,7 @@ section .container {
   border-top: 9px solid #48caf14d;
   border-right: 2px solid #48caf14d;
   border-left: 3px solid black;
+  border-bottom: 1px solid black;
 }
 .book_cover_mini{
   padding: 0px 10px;
@@ -4183,4 +4228,12 @@ blockquote {
 }
 .text_title {
   color: blue;
+}
+.book_cover_detail {
+  width: 100%;
+  padding: 0px 19px;
+  border-top: 9px solid #48caf14d;
+  border-right: 2px solid #48caf14d;
+  border-left: 3px solid black;
+  border-bottom: 1px solid black;
 }
