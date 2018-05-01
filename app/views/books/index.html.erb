@@ -28,9 +28,17 @@
                 <h1><%=link_to book.title, book_path(book.id) %></h1>
                 <p><span class="text_title">Tác giả: </span><%= book.author %></p>
                 <p><span class="text_title">Tóm tắt: </span><%= book.summary %></p>
-                <footer>
-                  <a href="#" class="love" title="Thích"><i class="fa fa-heart"></i><div>273</div></a>
-                </footer>
+                <div id="like_for_books">
+                  <%= form_tag(load_like_path, method: 'get',hidden: true, remote: true ) do %>
+                    <%= text_field_tag(:book_id, nil, {value: "#{book.id}"}) %>
+                    <%= submit_tag("Load Comment Reply", id: "hidden_btn_load") %>
+                  <% end %>
+                  <script type="text/javascript">
+                    $(function(){
+                      document.getElementById("hidden_btn_load").click();
+                    });
+                  </script>
+                </div>
               </div>
             </div>
           </article>
