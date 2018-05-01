@@ -1,0 +1,15 @@
+<div class="mark_book w3-row-padding">
+  <%= form_tag book_user_books_path(@book.id), method: "post", remote: true do %>
+    <%= button_tag(type: "submit", class: "btn_mark", value: "like") do %>
+      <i class="fa fa-heart icon_not_mark" aria-hidden="true" title="Yêu thích">
+      </i>
+    <% end %>
+    <%= button_tag(type: "submit", class: "btn_mark", value: "reading") do %>
+      <i class="fa fa-eye icon_not_mark" aria-hidden="true" title="Đang đọc"></i>
+    <% end %>
+    <%= button_tag(type: "submit", class: "btn_mark", value: "read") do %>
+      <i class="fa fa-check-circle icon_not_mark" aria-hidden="true" title="Đã đọc"></i>
+      </i>
+    <% end %>
+  <% end %>
+</div>

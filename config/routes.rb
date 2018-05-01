@@ -9,7 +9,9 @@ Rails.application.routes.draw do
   resources :users, except: [:destroy, :index]
   resources :account_activations, only: [:edit]
   resources :passwords, only: [:new, :create, :edit, :update]
-  resources :books, only: [:index, :show]
+  resources :books, only: [:index, :show] do
+    resources :user_books, only: %i(create update)
+  end
 
   namespace :admin do
     root "static_pages#index"

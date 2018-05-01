@@ -15,13 +15,6 @@ class BooksController < ApplicationController
 
   def show
     find_book_mark(params[:id], current_user.id) if logged_in?
-    @reviews = @book.reviews.newest
-    @reviews = collection_paginate @reviews, params[:page], 5
-    book_star @book
-    respond_to do |format|
-      format.html
-      format.js
-    end
   end
 
   private
@@ -41,7 +34,7 @@ class BooksController < ApplicationController
 
   def find_book_mark book_id, user_id
     @user_book = UserBook.find_by book_id: book_id, user_id: user_id
-    @notify_user_book = t ".notify_user_book" if @user_book.nil?
+    @notify_user_book = "Bạn chưa đánh dấu sách" if @user_book.nil?
   end
 
   def load_books

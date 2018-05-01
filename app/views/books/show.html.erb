@@ -1,0 +1,70 @@
+<% if @book.nil? %>
+  <% provide :title, "Chi tiết sách" %>
+<% else %>
+  <% provide :title, @book.title %>
+<% end %>
+<div class="container">
+  <div class="line top">
+    <div>Chi tiết sách</div>
+  </div>
+
+  <div class="row">
+    <% if @book.nil? %>
+      <h6 class="text_title" style="text-align: center;">Không tìm thấy sách</h6>
+    <% else %>
+      <div class="col-6 col-md-4">
+        <%= link_to book_path(@book.id) do %>
+          <%= image_tag @book.image, class: "book_cover_detail", alt: "#{@book.title}" %>
+        <% end %>
+      </div>
+    <div class="col-12 col-md-8">
+      <article class="col-md-12 article-list">
+        <div class="details" style="margin: 0px;">
+          <div class="detail">
+            <div class="category">
+              <a href="javascript:void(0)">Ngày xuất bản:</a>
+            </div>
+            <div class="time"><%= @book.publish_date %></div>
+          </div>
+          <h1><%=link_to @book.title, book_path(@book.id) %></h1>
+          <p><span class="text_title">Tác giả: </span><%= @book.author %></p>
+          <p><span class="text_title">Số trang: </span><%= @book.number_of_pages %></p>
+          <p><span class="text_title">Tóm tắt: </span><%= @book.summary %></p>
+          <hr>
+          <h6>Đánh dấu sách của bạn</h6>
+          <div id="mark_book">
+            <%= render "user_books/mark_book" %>
+          </div>
+        </div>
+      </article>
+    </div>
+    <% end %>
+  </div>
+
+  <div class="line thin"></div>
+
+  <div class="comments">
+    <h4 class="title">Bài đánh giá <a href="#" style="font-size: 17px; float: right;">Viết bài đánh giá</a></h4>
+    <div class="comment-list">
+      <div class="item">
+        <div class="user">
+          <figure>
+            <img src="images/img01.jpg">
+          </figure>
+          <div class="details">
+            <h5 class="name">Mark Otto</h5>
+            <div class="time">24 Hours</div>
+            <div class="description">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+              tempor incididunt ut labore et dolore <a href="#">magna</a> aliqua. Ut enim ad minim veniam,
+              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.
+            </div>
+            <footer>
+              <a href="#">Reply</a>
+            </footer>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

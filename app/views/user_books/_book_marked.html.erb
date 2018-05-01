@@ -1,0 +1,35 @@
+<div class="mark_book w3-row-padding">
+  <%= form_tag book_user_book_path(@book.id, @user_book.id), method: "patch", remote: true do %>
+    <%= hidden_field_tag :status, @user_book.status %>
+    <%= hidden_field_tag :is_favorite, @user_book.is_favorite %>
+    <%= button_tag(type: "submit", class: "btn_mark", value: "like") do %>
+      <% if @user_book.is_favorite == true %>
+        <i class="fa fa-heart icon_mark<%= @user_book.is_favorite %>" aria-hidden="true" title="Bỏ yêu thích"></i>
+      <% else %>
+        <i class="fa fa-heart icon_mark<%= @user_book.is_favorite %>" aria-hidden="true" title="Yêu thích"></i>
+      <% end %>
+    <% end %>
+
+    <%= button_tag(type: "submit", class: "btn_mark", value: "reading") do %>
+      <% if @user_book.status == "reading" %>
+        <i class="fa fa-eye icon_mark<%= @user_book.status %>" aria-hidden="true" title="Hủy đánh dấu đang đọc"></i>
+      <% else %>
+        <i class="fa fa-eye icon_mark<%= @user_book.status %>" aria-hidden="true" title="Đánh dấu đang đọc"></i>
+      <% end %>
+    <% end %>
+
+
+    <%= button_tag(type: "submit", class: "btn_mark", value: "read") do %>
+      <% if @user_book.status == "read" %>
+        <i class="fa fa-check-circle icon_mark<%= @user_book.status %>" aria-hidden="true" title="Hủy đánh dấu đã đọc"></i>
+      <% else %>
+        <i class="fa fa-check-circle icon_mark<%= @user_book.status %>" aria-hidden="true" title="Đánh dấu đã đọc"></i>
+      <% end %>
+    <% end %>
+  <% end %>
+  <% if !@notify_mark.nil? %>
+    <span class="alert-success">
+      <%= @notify_mark %>
+    </span>
+  <% end %>
+</div>
