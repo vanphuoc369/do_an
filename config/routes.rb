@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  mount Ckeditor::Engine => '/ckeditor'
   root "static_pages#home"
 
   get "/signup", to: "users#new"
@@ -11,6 +12,9 @@ Rails.application.routes.draw do
   resources :passwords, only: [:new, :create, :edit, :update]
   resources :books, only: [:index, :show] do
     resources :user_books, only: %i(create update)
+    resources :reviews, except: [:index] do
+      resources :comments
+    end
   end
 
   namespace :admin do

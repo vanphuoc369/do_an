@@ -1,0 +1,47 @@
+<div>
+  <% if @reviews.any? %>
+    <% @reviews.each do |review| %>
+      <% user = find_user_review(review.user_id) %>
+      <div class="item">
+        <div class="user">
+          <figure>
+            <%= gravatar_for user %>
+          </figure>
+          <div class="details">
+            <h5 class="name"><%= link_to user.full_name, user_path(review.user_id) %></h5>
+            <div class="time">
+              <% if review_update? review %>
+                <%= t "h5_update", time: time_ago_in_words(review.updated_at) %>
+              <% else %>
+                <%= t "h5_create", time: time_ago_in_words(review.created_at) %>
+              <% end %>
+              <% if logged_in? && correct_user_review?(review) %>
+                <span style="float: right;">
+                  <%= link_to "Cập nhập", edit_book_review_path(review.book, review), remote: true; %>
+                  |
+                  <%= link_to "Xóa", book_review_path(review.book, review),
+                  method: :delete, data: {confirm: "Bạn có muốn xóa bài đánh giá này không?"} %>
+                </span>
+              <% end %>
+            </div>
+            <div class="description">
+              <span class="text_title">Đánh giá sao: </span>
+              <%= load_star_rating(review.rate) %>
+              <br>
+              <span class="text_title">Nội dung đánh giá: </span>
+              <%= review.content.html_safe %>
+            </div>
+            <footer>
+              <%= link_to "Xem các phản hồi", book_review_path(@book.id, review.id) %>
+            </footer>
+          </div>
+        </div>
+      </div>
+      <%= will_paginate @reviews, id: "paginate" %>
+    <% end %>
+  <% else %>
+    <div>
+      <p>Chưa có bài đánh giá cho quyển sách này.</p>
+    </div>
+  <% end %>
+</div>

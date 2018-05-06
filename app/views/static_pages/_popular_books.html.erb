@@ -1,70 +1,22 @@
 <aside>
   <h1 class="aside-title">Những cuốn sách được đọc nhiều</h1>
   <div class="aside-body">
-    <article class="article-mini">
-      <div class="inner">
-        <figure>
-          <a href="single.html">
-          <img src="/assets/Bat-song-cam-xuc.jpg" alt="Bac song cam xuc" class="book_cover_mini">
-          </a>
-        </figure>
-        <div class="padding">
-          <h1 class="title_book_mini"><a href="single.html">Fusce ullamcorper elit at felis cúu suscipit</a></h1>
-          <p class="author_book_mini">Tác giả: <span>Ông nào đó</span></p>
-        </div>
-      </div>
-    </article>
-    <article class="article-mini">
-      <div class="inner">
-        <figure>
-          <a href="single.html">
-            <img src="/assets/dac-nhan-tam-bia-cung.jpg" alt="Đắc nhân tâm" class="book_cover_mini">
-          </a>
-        </figure>
-        <div class="padding">
-          <h1 class="title_book_mini"><a href="single.html">Fusce ullamcorper elit at felis cúu suscipit</a></h1>
-          <p class="author_book_mini">Tác giả: <span>Ông nào đó</span></p>
-        </div>
-      </div>
-    </article>
-    <article class="article-mini">
-      <div class="inner">
-        <figure>
-          <a href="single.html">
-            <img src="/assets/nhung-tam-long-cao-ca.jpg" alt="Nhung tam long cao ca" class="book_cover_mini">
-          </a>
-        </figure>
-        <div class="padding">
-          <h1 class="title_book_mini"><a href="single.html">Fusce ullamcorper elit at felis cúu suscipit</a></h1>
-          <p class="author_book_mini">Tác giả: <span>Ông nào đó</span></p>
-        </div>
-      </div>
-    </article>
-    <article class="article-mini">
-      <div class="inner">
-        <figure>
-          <a href="single.html">
-            <img src="/assets/bai-hoc-dieu-ky-tu-chiec-xe-rac.jpg" alt="Bai hoc dieu ky tu chiec xe rac" class="book_cover_mini">
-          </a>
-        </figure>
-        <div class="padding">
-          <h1 class="title_book_mini"><a href="single.html">Fusce ullamcorper elit at felis cúu suscipit</a></h1>
-          <p class="author_book_mini">Tác giả: <span>Ông nào đó</span></p>
-        </div>
-      </div>
-    </article>
-    <article class="article-mini">
-      <div class="inner">
-        <figure>
-          <a href="single.html">
-            <img src="/assets/dem-toi-va-anh-sang.jpg" alt="Dem toi va anh sang" class="book_cover_mini">
-          </a>
-        </figure>
-        <div class="padding">
-          <h1 class="title_book_mini"><a href="single.html">Fusce ullamcorper elit at felis cúu suscipit</a></h1>
-          <p class="author_book_mini">Tác giả: <span>Ông nào đó</span></p>
-        </div>
-      </div>
-    </article>
+    <% if @top_read_books.any? %>
+      <% @top_read_books.each do |book| %>
+        <article class="article-mini">
+          <div class="inner">
+            <figure>
+              <%= link_to book_path(book.id) do %>
+                <%= image_tag book.image, class: "book_cover_mini popular", alt: "#{book.title}" %>
+              <% end %>
+            </figure>
+            <div class="padding">
+              <h1 class="title_book_mini"><%= link_to book.title, book_path(book.id) %></h1>
+              <p class="author_book_mini">Tác giả: <span><%= book.author %></span></p>
+            </div>
+          </div>
+        </article>
+      <% end %>
+    <% end %>
   </div>
 </aside>

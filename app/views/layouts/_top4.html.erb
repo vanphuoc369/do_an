@@ -4,26 +4,19 @@
       <div>Top 4 cuốn sách được yêu thích nhất</div>
     </div>
     <div class="row">
-      <div class="col-xs-6 col-sm-3">
-        <img src="/assets/Bat-song-cam-xuc.jpg" alt="Bat song cam xuc" class="book_cover_top4">
-        <h6><a href="single.html">Tiêu đề sách</a></h2>
-        <p>Phần nội dung tóm tắt của sách sẽ được hiển thị tại đây.</p>
-      </div>
-      <div class="col-xs-6 col-sm-3">
-        <img src="/assets/Bi-mat-tu-duy-trieu-phu.jpg" alt="" class="book_cover_top4">
-        <h6><a href="single.html">Tiêu đề sách</a></h2>
-        <p>Phần nội dung tóm tắt của sách sẽ được hiển thị tại đây.</p>
-      </div>
-      <div class="col-xs-6 col-sm-3">
-        <img src="/assets/toi-tai-gioi.jpg" alt="" class="book_cover_top4">
-        <h6><a href="single.html">Tiêu đề sách</a></h2>
-        <p>Phần nội dung tóm tắt của sách sẽ được hiển thị tại đây.</p>
-      </div>
-      <div class="col-xs-6 col-sm-3">
-        <img src="/assets/doi_don_gian_khi_ta_don_gian.jpg" alt="" class="book_cover_top4">
-        <h6><a href="single.html">Tiêu đề sách</a></h2>
-        <p>Phần nội dung tóm tắt của sách sẽ được hiển thị tại đây.Phần nội dung tóm tắt của sách sẽ được hiển thị tại đây.Phần nội dung tóm tắt của sách sẽ được hiển thị tại đây.Phần nội dung tóm tắt của sách sẽ được hiển thị tại đây.Phần nội dung tóm tắt của sách sẽ được hiển thị tại đây.Phần nội dung tóm tắt của sách sẽ được hiển thị tại đây.</p>
-      </div>
+      <% if @top_is_favorite_books.any? %>
+        <% @top_is_favorite_books.each do |book| %>
+          <div class="col-xs-6 col-sm-3">
+            <figure>
+                  <%= link_to book_path(book.id) do %>
+                    <%= image_tag book.image, class: "book_cover top4", alt: "#{book.title}" %>
+                  <% end %>
+            </figure>
+            <h6><%= link_to book.title, book_path(book.id) %></h6>
+            <p><%= book.summary %></p>
+          </div>
+        <% end %>
+      <% end %>
     </div>
   </div>
 </div>
