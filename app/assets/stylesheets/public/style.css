@@ -1,5 +1,46 @@
+#show_or_hidden {
+  border: none;
+  background-color: white;
+  color: #F73F52;
+}
+
+#message-box {
+  resize: none;
+  width: 100%;
+  padding: 5px;
+  overflow: hidden;
+  box-sizing: border-box;
+  border: none;
+  background-color: #dfe1e261;
+  border-radius: 5px;
+}
+
+#edit-comment{
+  resize: none;
+  width: 100%;
+  padding: 5px;
+  overflow: hidden;
+  box-sizing: border-box;
+  border: none;
+  background-color: #dfe1e261;
+  border-radius: 5px;
+}
+
+.comments .comment-list .item .user .cmt figure{
+  width: 45px;
+  height: 45px;
+}
+.item .style_comment{
+  border: none;
+  padding: 0px;
+}
+
 .btn.btn-success.button_submit {
   margin-top: 9px;
+}
+
+.btn.btn-success.button_submit.cancel{
+  background-color: #818184e8;
 }
 
 .btn_mark{

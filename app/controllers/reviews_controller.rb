@@ -10,6 +10,10 @@ class ReviewsController < ApplicationController
 
   def show
     find_comments @review
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def create
@@ -77,7 +81,7 @@ class ReviewsController < ApplicationController
   end
 
   def find_comments review
-    @comments = review.comments.paginate page: params[:page], per_page: Settings.comments.page_size
-    return @notify_comment_empty = t(".notify_comment_empty") if @comments.empty?
+    @comments = review.comments
+    return @notify_comment_empty = "Chưa có bình luận cho bài đánh giá." if @comments.empty?
   end
 end
