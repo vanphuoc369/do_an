@@ -23,14 +23,16 @@
                   <div class="category">
                     <a href="javascript:void(0)">Ngày xuất bản:</a>
                   </div>
-                  <div class="time"><%= book.publish_date %></div>
+                  <div class="time"><%= book.publish_date.strftime("%d/%m/%Y") %></div>
                 </div>
                 <h1><%=link_to book.title, book_path(book.id) %></h1>
                 <p><span class="text_title">Tác giả: </span><%= book.author %></p>
                 <p><span class="text_title">Tóm tắt: </span><%= book.summary %></p>
-                <footer>
-                  <a href="#" class="love" title="Thích"><i class="fa fa-heart"></i><div>273</div></a>
-                </footer>
+                <p><span class="text_title">Lượt thích: </span><%= count_favorite(book.id) %></p>
+                <% book_star(book) %>
+                <p><span class="text_title">Điểm đánh giá: </span><span style="color: red;"><%=@average%> </span>/ 5
+                (<span style="color: green;"><%=@count_rate %></span> đánh giá)
+                </p>
               </div>
             </div>
           </article>

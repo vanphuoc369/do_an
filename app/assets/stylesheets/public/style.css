@@ -1,3 +1,7 @@
+.btn.btn-success.button_submit {
+  margin-top: 9px;
+}
+
 .btn_mark{
   border: none;
   background-color: #fff;
@@ -42,6 +46,22 @@
 .fa.fa-check-circle.icon_markreading{
  color: wheat;
 }
+
+.book_cover.top4 {
+  width: 70%;
+  height: 100%;
+  margin: 15%;
+}
+
+.book_cover_mini.popular {
+  width: 74%;
+  margin: 0 12%;
+  border-top: 3px solid #48caf14d;
+  border-right: 1px solid #48caf14d;
+  border-left: 1px solid black;
+  border-bottom: 1px solid black;
+}
+
 /*
  * Import Fonts
  *
@@ -2263,8 +2283,9 @@ section .container {
   border-left: 3px solid black;
   border-bottom: 1px solid black;
 }
+.book_cover_top4{
+}
 .book_cover_mini{
-  padding: 0px 10px;
   height: 100%;
 }
 .article-list figure img {
@@ -3542,7 +3563,6 @@ blockquote {
   margin-bottom: 20px;
 }
 .comments .title a {
-  font-size: 10px;
   display: inline-block;
   margin-left: 10px;
   font-weight: 600;
@@ -4236,4 +4256,57 @@ blockquote {
   border-right: 2px solid #48caf14d;
   border-left: 3px solid black;
   border-bottom: 1px solid black;
+}
+
+/*load star for rate*/
+.fs-rate{
+  margin: 0;
+  padding: 0;
+}
+.fs-rate label{
+  margin: 0;
+  padding: 0;
+}
+.rate {
+  border: none;
+  float: left;
+}
+.rate > input{
+  display: none;
+}
+.rate > label:before{
+  margin: 5px;
+  font-size: 15px;
+  font-family: FontAwesome;
+  display: inline-block;
+  content: "\f005";
+}
+.rate > .half:before{
+  content: "\f089";
+  position: absolute;
+}
+.rate > label{
+  color: #808080;
+ float: right;
+}
+.rate > input:checked ~ label,
+.rate:not(:checked) > label:hover,
+.rate:not(:checked) > label:hover ~ label{
+  color: #FFD700;
+}
+.rating > input:checked + label:hover,
+.rating > input:checked ~ label:hover,
+.rating > label:hover ~ input:checked ~ label,
+.rating > input:checked ~ label:hover ~ label{
+  color: #FFED85;
+}
+.w-space{
+  padding-left: 8px;
+}
+.set_color{
+  color: orange;
+}
+.write_review a{
+  font-size: 17px;
+  float: right;
 }

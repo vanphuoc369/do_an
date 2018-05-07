@@ -3,6 +3,14 @@ class User < ApplicationRecord
   before_save   :downcase_email
   before_create :create_activation_digest
 
+  has_many :user_books, dependent: :destroy
+  has_many :books, through: :user_books
+  has_many :buy_requests, dependent: :destroy
+  has_many :reviews, dependent: :destroy
+  has_many :comments, dependent: :destroy
+  has_many :activities, dependent: :destroy
+  has_many :notifications, dependent: :destroy
+
   validates :full_name, presence: {accept: true, message: "không được để trống"}
   validates :full_name, length: { maximum: 50, message: "không được vượt quá 50 ký tự" }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i

@@ -1,0 +1,26 @@
+<div>
+  <h6 style="color: green; text-align: center;">Cập nhật bài đánh giá</h6>
+  <%= form_for [@book, @review], html: {class: "review form-horizontal"}, method: :patch do |f| %>
+    <%= render "shared/error_messages", object: @review %>
+    <div class = "w3-row-padding w3-padding">
+      <%= f.label :rate, "Đánh giá sao" %>
+      <br>
+      <fieldset class = "rate">
+        <% 5.downto 1 do |i| %>
+          <%= f.radio_button :rate, i, id: "star#{i}_" %>
+          <%= label "star#{i}","", class: "full" %>
+
+          <%= f.radio_button :rate, i - 0.5, id: "star#{i - 1}half_" %>
+          <%= label "star#{i - 1}half", "", class: "half" %>
+        <% end %>
+      </fieldset>
+    </div>
+    <hr>
+    <div class = "w3-row-padding w3-padding">
+      <%= f.label :content, "Nội dung đánh giá" %>
+      <%= f.cktext_area :content, class: "ta-review" %>
+    </div>
+    <%= hidden_field_tag :book_id, @book.id %>
+    <%= f.button "Cập nhật đánh giá", class: "btn btn-success button_submit" %>
+  <% end %>
+</div>

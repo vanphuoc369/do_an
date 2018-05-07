@@ -1,0 +1,25 @@
+<div>
+  <h2><%= t ".h2" %></h2>
+  <%= form_for [@book, @book.reviews.build], html: {class: "form-horizontal"}, method: :post do |f| %>
+    <div class = "control-group">
+      <%= f.label :rate, t(".label") %>
+      <fieldset class = "rate">
+        <% Settings.max_star.downto Settings.min_star do |i| %>
+          <%= f.radio_button :rate, i, id: "star#{i}_" %>
+          <%= label "star#{i}","", title: t(".title#{i}"), class: "full" %>
+
+          <%= f.radio_button :rate, i - Settings.half, id: "star#{i - Settings.full}half_" %>
+          <%= label "star#{i - Settings.full}half", "", title: t(".title#{i - Settings.full}half"), class: "half" %>
+        <% end %>
+      </fieldset>
+    </div>
+    <div class = "control-group">
+      <%= f.label :content, t(".content") %>
+      <%= f.text_area :content, require: true, class: "ta-review" %>
+    </div>
+    <div class = "control-group">
+      <%= f.button t(".title"), class: "shopBtn" %>
+    </div>
+    <%= hidden_field_tag :book_id, @book.id %>
+  <% end %>
+</div>
