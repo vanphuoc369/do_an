@@ -1,1 +1,6 @@
-$('#comment_<%= @comment.id %>').html('<%= j render "comment_form_edit" %>');
+<% if @id_comment_reply.nil? %>
+  $('#comment_<%= @comment.id %>').html('<%= j render "comment_form_edit" %>');
+<% else %>
+  $('#comment_<%= @comment.id %>').html('<%= j render "reply_cmt_form_edit" %>');
+<% end %>
+

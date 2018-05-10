@@ -1,5 +1,6 @@
 <h6>Chỉnh sửa bình luận của bạn:</h6>
 <%= form_for [@book, @review, @comment], html: {class: "form-horizontal content_cmt"}, remote: true do |f| %>
+  <%= f.text_field :id_comment_reply, hidden: true, value: @comment.id_comment_reply %>
   <div class="item style_comment" style="padding: 0px; border: none;">
     <div class="user cmt">
       <figure>
@@ -7,7 +8,7 @@
       </figure>
       <div class="details" style="padding: 0 9px; margin-left: 55px;">
         <div class = "control-group">
-          <%= f.text_area :content, required: true, id: "edit-comment", placeholder: "Nhập nội dung bình luận ..." %>
+          <%= f.text_area :content, required: true, id: "edit-reply-comment", placeholder: "Nhập nội dung bình luận ..." %>
         </div>
         <%= f.submit "Cập nhật bình luận", class: "btn btn-success button_submit" %>
         <%= f.submit "Hủy bỏ", class: "btn btn-success button_submit cancel" %>
@@ -17,9 +18,9 @@
 <% end %>
 
 <script type="text/javascript">
-  $("#edit-comment").on('input', function() {
-    var scroll_height = $("#edit-comment").get(0).scrollHeight;
+  $("#edit-reply-comment").on('input', function() {
+    var scroll_height = $("#edit-reply-comment").get(0).scrollHeight;
 
-    $("#edit-comment").css('height', scroll_height + 'px');
+    $("#edit-reply-comment").css('height', scroll_height + 'px');
   });
 </script>

@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
 
   before_action :find_review
-  before_action :find_book, except: [:new, :edit]
+  before_action :find_book, only: [:create, :update, :destroy]
   before_action :find_comment, only: %i(destroy edit update)
   before_action -> {check_login_or_save_url(book_review_path params[:book_id], params[:review_id])}
 
@@ -16,21 +16,7 @@ class CommentsController < ApplicationController
     else
       flash.now[:danger] = "Đăng bình luận thất bại."
     end
-    if params[:comment][:id_comment_reply].nil?
-      find_comments params[:review_id]
-    else
-      @id_comment_reply = params[:comment][:id_comment_reply]
-      find_reply_comments params[:review_id], params[:comment][:id_comment_reply]
-    end
-    respond_to do |format|
-      format.html
-      format.js
-    end
-  end
-
-  def show
-    @comment_id = params[:id]
-    @comments = Comment.list_reply_cmt(params[:review_id], params[:id])
+    find_comments params[:review_id]
     respond_to do |format|
       format.html
       format.js
@@ -45,12 +31,7 @@ class CommentsController < ApplicationController
         flash.now[:danger] = "Chỉnh sửa bình luận thất bại, vui lòng kiểm tra lại!"
       end
     end
-    if params[:comment][:id_comment_reply].nil?
-      find_comments params[:review_id]
-    else
-      @id_comment_reply = params[:comment][:id_comment_reply]
-      find_reply_comments params[:review_id], params[:comment][:id_comment_reply]
-    end
+    find_comments params[:review_id]
     respond_to do |format|
       format.html
       format.js
@@ -60,7 +41,6 @@ class CommentsController < ApplicationController
   def edit
     @book = Book.find_by id: params[:book_id]
     if @comment
-      @id_comment_reply = @comment.id_comment_reply
       respond_to do |format|
         format.html {redirect_to @book, @review, @comment}
         format.js
@@ -72,18 +52,12 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    @id_reply_comment = @comment.id_comment_reply
     if @comment.destroy
       flash.now[:success] = "Xóa bình luận thành công!"
     else
       flash.now[:danger] = "Xóa bình luận thất bại!"
     end
-    if @id_reply_comment.nil?
-      find_comments params[:review_id]
-    else
-      @id_comment_reply = @id_reply_comment
-      find_reply_comments params[:review_id], @id_reply_comment
-    end
+    find_comments params[:review_id]
     respond_to do |format|
       format.html
       format.js
@@ -93,7 +67,7 @@ class CommentsController < ApplicationController
   private
 
   def comment_params
-    params.require(:comment).permit :review_id, :content, :id_comment_reply
+    params.require(:comment).permit :review_id, :content
   end
 
   def find_review
@@ -111,16 +85,9 @@ class CommentsController < ApplicationController
 
   def find_comments review_id
     find_review
-    @comments = Comment.list_cmt(review_id)
+    @comments = @review.comments
     return @notify_comment_empty = "Chưa có bình luận cho bài đánh giá." if @comments.empty?
   end
-
-  def find_reply_comments review_id, cmt_id
-    find_review
-    @comments = Comment.list_reply_cmt(review_id, cmt_id)
-    return @notify_comment_empty = "Chưa có bình luận cho bài đánh giá." if @comments.empty?
-  end
-
   def find_book
     @book = Book.find_by id: params[:book_id]
   end

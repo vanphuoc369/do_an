@@ -81,7 +81,7 @@ class ReviewsController < ApplicationController
   end
 
   def find_comments review
-    @comments = review.comments
+    @comments = Comment.list_cmt(review.id.to_s)
     return @notify_comment_empty = "Chưa có bình luận cho bài đánh giá." if @comments.empty?
   end
 end

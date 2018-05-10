@@ -1,12 +1,6 @@
-
-<h6>Bình luận về bài đánh giá:</h6>
+<hr>
 <% if @comments.any? %>
-  <footer style="margin-left: 7px; margin-bottom: 18px;">
-    <button onclick="show_or_hidden()" id="show_or_hidden" value="hidden">
-      Ẩn tất cả các bình luận   <i class="fa fa-angle-up"></i>
-    </button>
-  </footer>
-  <div id="show_list_cmt">
+  <div id="show_list_reply_cmt">
     <% @comments.each do |comment| %>
       <% user = find_user_review(comment.user_id) %>
       <div class="item style_comment" style="padding: 0px; border: none;" id="comment_<%= comment.id %>">
@@ -20,11 +14,6 @@
               <span style="white-space: pre-line"><%= comment.content %></span>
             </p>
             <div class="time">
-              <%= link_to book_review_comment_path(comment.review.book, comment.review,comment.id),
-              remote: true do %>
-                Trả lời   (<%= count_cmt_reply(comment.id) %>)
-              <% end %>
-              |
               <% if logged_in? && correct_user_comment?(comment) %>
                 <span>
                   <%= link_to "Cập nhập", edit_book_review_comment_path(comment.review.book, comment.review,comment.id),
@@ -52,8 +41,8 @@
   <p><%= @notify_comment_empty %></p>
 <% end %>
 <% if logged_in? %>
-  <div id="comment_form">
-    <%= render "comments/comment_form" %>
+  <div id="reply_cmt_form">
+    <%= render "comments/reply_cmt_form" %>
   </div>
 <% else %>
   <footer>
