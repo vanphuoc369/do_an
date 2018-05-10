@@ -31,9 +31,12 @@
               <span class="text_title">Nội dung đánh giá: </span>
               <%= review.content.html_safe %>
             </div>
-            <footer>
-              <%= link_to "Xem các phản hồi", book_review_path(@book.id, review.id) %>
-            </footer>
+            <hr>
+            <div id="show_comments">
+              <footer>
+                <%= link_to "Xem các phản hồi", book_review_path(@book.id, review.id), remote: true %>
+              </footer>
+            </div>
           </div>
         </div>
       </div>

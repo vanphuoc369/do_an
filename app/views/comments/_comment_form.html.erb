@@ -1,0 +1,24 @@
+<%= form_for [@book, @review, @review.comments.build], html: {class: "form-horizontal content_cmt"},
+  method: :post, remote: true do |f| %>
+    <div class="item style_comment" style="padding: 0px; border: none;">
+      <div class="user cmt">
+        <figure>
+          <%= gravatar_for current_user %>
+        </figure>
+        <div class="details" style="padding: 0 9px; margin-left: 55px;">
+          <div class = "control-group">
+            <%= f.text_area :content, require: true, id: "message-box", placeholder: "Nhập nội dung bình luận ..." %>
+          </div>
+          <%= f.button "Bình luận", class: "btn btn-success button_submit" %>
+        </div>
+      </div>
+    </div>
+<% end %>
+
+<script type="text/javascript">
+  $("#message-box").on('input', function() {
+    var scroll_height = $("#message-box").get(0).scrollHeight;
+
+    $("#message-box").css('height', scroll_height + 'px');
+  });
+</script>

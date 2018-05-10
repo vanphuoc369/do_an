@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   resources :books, only: [:index, :show] do
     resources :user_books, only: %i(create update)
     resources :reviews, except: [:index] do
-      resources :comments
+      resources :comments, except: [:index]
     end
   end
 
