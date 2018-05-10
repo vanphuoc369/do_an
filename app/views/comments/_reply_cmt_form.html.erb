@@ -1,5 +1,6 @@
 <%= form_for [@book, @review, @review.comments.build], html: {class: "form-horizontal content_cmt"},
   method: :post, remote: true do |f| %>
+    <%= f.text_field :id_comment_reply, hidden: true, value: @comment_id %>
     <div class="item style_comment" style="padding: 0px; border: none;">
       <div class="user cmt">
         <figure>
@@ -7,7 +8,7 @@
         </figure>
         <div class="details" style="padding: 0 9px; margin-left: 55px;">
           <div class = "control-group">
-            <%= f.text_area :content, required: true, id: "message-box", placeholder: "Nhập nội dung bình luận ..." %>
+            <%= f.text_area :content, required: true, id: "message-box-reply", placeholder: "Nhập nội dung bình luận ..." %>
           </div>
           <%= f.button "Bình luận", class: "btn btn-success button_submit" %>
         </div>
@@ -16,9 +17,9 @@
 <% end %>
 
 <script type="text/javascript">
-  $("#message-box").on('input', function() {
-    var scroll_height = $("#message-box").get(0).scrollHeight;
+  $("#message-box-reply").on('input', function() {
+    var scroll_height = $("#message-box-reply").get(0).scrollHeight;
 
-    $("#message-box").css('height', scroll_height + 'px');
+    $("#message-box-reply").css('height', scroll_height + 'px');
   });
 </script>

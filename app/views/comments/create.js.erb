@@ -1,1 +1,5 @@
-$('#show_comments').html('<%= j(render('comments/comment')) %>');
+<% if @id_comment_reply.nil? %>
+  $('#show_comments').html('<%= j(render('comments/comment')) %>');
+<% else %>
+  $('#box_reply_cmt_id_<%= @id_comment_reply %>').html('<%= j(render('comments/reply_comments')) %>');
+<% end %>

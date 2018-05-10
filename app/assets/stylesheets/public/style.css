@@ -15,7 +15,29 @@
   border-radius: 5px;
 }
 
+#message-box-reply {
+  resize: none;
+  width: 100%;
+  padding: 5px;
+  overflow: hidden;
+  box-sizing: border-box;
+  border: none;
+  background-color: #dfe1e261;
+  border-radius: 5px;
+}
+
 #edit-comment{
+  resize: none;
+  width: 100%;
+  padding: 5px;
+  overflow: hidden;
+  box-sizing: border-box;
+  border: none;
+  background-color: #dfe1e261;
+  border-radius: 5px;
+}
+
+#edit-reply-comment{
   resize: none;
   width: 100%;
   padding: 5px;
