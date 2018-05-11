@@ -29,8 +29,6 @@
               <% else %>
                 <%= t "comments.time_create", time: time_ago_in_words(comment.created_at) %>
               <% end %>
-
-              <div id="box_reply_cmt_id_<%= comment.id %>"></div>
             </div>
           </div>
         </div>

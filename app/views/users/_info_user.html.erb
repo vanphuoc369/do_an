@@ -7,8 +7,36 @@
 </div>
 <hr>
 <h6>Nhật ký hoạt động</h6>
-<div class="activity_history">
-  <span><%= @user.full_name %></span> nội dung hoạt động
-  <p>thoi gian hoat dong xay ra</p>
-  <hr>
-</div>
+<% if current_user? @user %>
+  <div class="activity_history">
+    <% if @activities.any? %>
+      <% @activities.each do |activity| %>
+        <% find_object(activity.type_activity, activity.object_id)%>
+        <% if activity.type_activity == "book"%>
+          <%= link_to book_path(activity.object_id) do %>
+            <span style="color: blue;"><%= @user.full_name %></span>
+            <span style="color: black;"><%= activity.content %></span>
+            <span style="color: blue;"><%= @book.title if @book %></span>
+          <% end %>
+        <% elsif activity.type_activity == "review" %>
+          <%= link_to notifications_path(:review_id => activity.object_id) do %>
+            <span style="color: blue;"><%= @user.full_name %></span>
+            <span style="color: black;"><%= activity.content %></span>
+            <span style="color: blue;"><%= @book.title if @book %></span>
+          <% end %>
+        <% else %>
+          <%= link_to notifications_path(:comment_id => activity.object_id) do %>
+            <span style="color: blue;"><%= @user.full_name %></span>
+            <span style="color: black;"><%= activity.content %></span>
+            <span style="color: blue;"><%= @book.title if @book %></span>
+          <% end %>
+        <% end %>
+        <p style="color: #bbafaf;"><%= t "notify_time", time: time_ago_in_words(activity.created_at) %></p>
+        <hr>
+      <% end %>
+      <%= will_paginate @activities, id: "paginate" %>
+    <% end %>
+  </div>
+<% else %>
+  <span style="color: red;">Bạn không có quyền xem nhật ký hoạt động của người này.</span>
+<% end %>

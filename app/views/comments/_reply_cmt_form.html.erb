@@ -1,6 +1,10 @@
 <%= form_for [@book, @review, @review.comments.build], html: {class: "form-horizontal content_cmt"},
   method: :post, remote: true do |f| %>
+  <% if @id_comment_reply %>
+    <%= f.text_field :id_comment_reply, hidden: true, value: @id_comment_reply %>
+  <% else %>
     <%= f.text_field :id_comment_reply, hidden: true, value: @comment_id %>
+  <% end %>
     <div class="item style_comment" style="padding: 0px; border: none;">
       <div class="user cmt">
         <figure>

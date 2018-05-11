@@ -7,9 +7,11 @@
       <article class="featured" style="height: 100px;">
         <div class="details">
           <div class="category">
-            <a href="https://en.gravatar.com/emails" target="_blank" class="btn btn-magz white btn-block">
-              Cập nhật ảnh đại diện
-            </a>
+            <% if current_user? @user %>
+              <a href="https://en.gravatar.com/emails" target="_blank" class="btn btn-magz white btn-block">
+                Cập nhật ảnh đại diện
+              </a>
+            <% end %>
           </div>
         </div>
       </article>

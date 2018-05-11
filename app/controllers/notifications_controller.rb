@@ -5,14 +5,19 @@ class NotificationsController < ApplicationController
       find_review_and_book
     elsif params[:comment_id]
       find_comment
-      if @comment.id_comment_reply
-        find_comment_replied @comment.id_comment_reply
-        @show_cmt_reply = true
-      else
-        @show_cmt = true
+      if @comment
+        if @comment.id_comment_reply
+          find_comment_replied @comment.id_comment_reply
+          @id_comment_reply = @comment.id_comment_reply
+          @show_cmt_reply = true
+        else
+          @show_cmt = true
+        end
+        find_review @comment.review_id
+        if @review
+          find_book @review.book_id
+        end
       end
-      find_review @comment.review_id
-      find_book @review.book_id
     else
       flash[:danger] = "Thao tác không thành công."
       redirect_to root_path
@@ -53,7 +58,7 @@ class NotificationsController < ApplicationController
     @comment = Comment.find_by id: params[:comment_id]
     return if @comment
     flash[:danger] = "Không tìm thấy bình luận."
-    redirect_to root_url
+    redirect_to root_path
   end
 
   def find_comment_replied id_comment_reply
