@@ -18,6 +18,8 @@ class UsersController < ApplicationController
   end
 
   def show
+    @activities = Activity.your_activities @user.id
+    @activities = collection_paginate @activities, params[:page], 5
   end
 
   def update
@@ -45,7 +47,7 @@ class UsersController < ApplicationController
   def load_user
     @user = User.find_by id: params[:id]
     return if @user
-    flash[:danger] = "Không tìm thấy User"
+    flash[:danger] = "Không tìm thấy người này"
     redirect_to root_path
   end
 

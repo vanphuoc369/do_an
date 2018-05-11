@@ -19,6 +19,7 @@ class ReviewsController < ApplicationController
   def create
     @review = current_user.reviews.build review_params
     if @book.reviews << @review
+      Activity.create(user_id: current_user.id, type_activity: "review", content: "Bạn đã đánh giá sách", object_id: @review.id)
       flash[:success] = "Đăng bài thành công"
       redirect_to @book
     else
@@ -35,6 +36,7 @@ class ReviewsController < ApplicationController
 
   def update
     if @review.update_attributes review_params
+      Activity.create(user_id: current_user.id, type_activity: "review", content: "Bạn đã cập nhật bài đánh giá sách", object_id: @review.id)
       flash[:success] = "Cập nhập bài đánh giá thành công!"
     else
       flash[:danger] = "Cập nhập bài đánh giá không thành công! Vui lòng kiểm tra lại nội dung bài đánh giá."
@@ -44,6 +46,7 @@ class ReviewsController < ApplicationController
 
   def destroy
     if @review.destroy
+      Activity.create(user_id: current_user.id, type_activity: "book", content: "Bạn đã xóa bài đánh giá sách", object_id: @book.id)
       flash[:success] = "Xóa bài đánh giá thành công!"
     else
       flash[:danger] = "Xóa bài đánh giá không thành công."

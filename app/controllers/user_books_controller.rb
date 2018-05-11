@@ -5,12 +5,15 @@ class UserBooksController < ApplicationController
   def create
     if params[:button] == "like"
       @user_book= UserBook.new(user_id: current_user.id, book_id: @book.id, is_favorite: true)
+      Activity.create(user_id: current_user.id, type_activity: "book", content: "Bạn đã đánh dấu yêu thích sách", object_id: @book.id)
       @notify_mark = "Đánh dấu sách ưa thích thành công."
     elsif params[:button] == "read"
       @user_book= UserBook.new(user_id: current_user.id, book_id: @book.id, status: 2)
+      Activity.create(user_id: current_user.id, type_activity: "book", content: "Bạn đã đánh dấu đã đọc sách", object_id: @book.id)
       @notify_mark = "Đánh dấu sách đã đọc thành công."
     else
       @user_book= UserBook.new(user_id: current_user.id, book_id: @book.id, status: 1)
+      Activity.create(user_id: current_user.id, type_activity: "book", content: "Bạn đã đánh dấu đang đọc sách", object_id: @book.id)
       @notify_mark = "Đánh dấu sách đang đọc thành công."
     end
     if @user_book.save
@@ -36,16 +39,21 @@ class UserBooksController < ApplicationController
     if @user_book.update_attribute(:is_favorite, is_favorite) && @user_book.update_attribute(:status, status)
       if is_favorite == params[:is_favorite]
         if status == :read
+          Activity.create(user_id: current_user.id, type_activity: "book", content: "Bạn đã đánh dấu đã đọc sách", object_id: @book.id)
           @notify_mark = "Đánh dấu sách đã đọc thành công."
         elsif status == :reading
+          Activity.create(user_id: current_user.id, type_activity: "book", content: "Bạn đã đánh dấu đang đọc sách", object_id: @book.id)
           @notify_mark = "Đánh dấu sách đang đọc thành công."
         else
+          Activity.create(user_id: current_user.id, type_activity: "book", content: "Bạn đã hủy đánh dấu sách", object_id: @book.id)
           @notify_mark = "Hủy đánh dấu sách thành công."
         end
       else
         if is_favorite == true
+          Activity.create(user_id: current_user.id, type_activity: "book", content: "Bạn đã đánh dấu yêu thích sách", object_id: @book.id)
           @notify_mark = "Đánh dấu sách ưa thích thành công."
         else
+          Activity.create(user_id: current_user.id, type_activity: "book", content: "Bạn đã hủy đánh dấu yêu thích sách", object_id: @book.id)
           @notify_mark = "Hủy đánh dấu sách ưa thích thành công."
         end
       end

@@ -12,6 +12,8 @@ class CommentsController < ApplicationController
     if @comment.content.empty?
       flash.now[:warning] = "Hãy viết suy nghĩ của bạn vào phần nội dung bình luận."
     elsif @review.comments << @comment
+      Activity.create(user_id: current_user.id, type_activity: "comment",
+        content: "Bạn đã bình luận về bài đánh giá sách", object_id: @comment.id)
       flash.now[:success] = "Đăng bình luận thành công!"
     else
       flash.now[:danger] = "Đăng bình luận thất bại."
@@ -40,6 +42,8 @@ class CommentsController < ApplicationController
   def update
     if params[:commit] != 'Hủy bỏ'
       if @comment.update comment_params
+        Activity.create(user_id: current_user.id, type_activity: "comment",
+          content: "Bạn đã chỉnh sửa bình luận về bài đánh giá sách", object_id: @comment.id)
         flash.now[:success] = "Chỉnh sửa bình luận thành công!"
       else
         flash.now[:danger] = "Chỉnh sửa bình luận thất bại, vui lòng kiểm tra lại!"
