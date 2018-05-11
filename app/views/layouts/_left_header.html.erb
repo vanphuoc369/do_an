@@ -15,9 +15,21 @@
         <div class="row">
           <div class="col-md-8 col-md-offset-2">
             <ul class="vertical-menu">
-              <li><a href="#">Những cuốn sách được yêu thích nhất</a></li>
-              <li><a href="#">Sách mới được thêm vào hệ thống</a></li>
-              <li><a href="#">Những cuốn sách được đọc nhiều</a></li>
+              <li>
+                <%= link_to books_path(:request => "love") do %>
+                  Những cuốn sách được yêu thích nhất
+                <% end %>
+              </li>
+              <li>
+                <%= link_to books_path(:request => "new") do %>
+                  Sách mới được thêm vào hệ thống
+                <% end %>
+              </li>
+              <li>
+                <%= link_to books_path(:request => "read") do %>
+                  Những cuốn sách được đọc nhiều
+                <% end %>
+              </li>
               <li>
                 <%=link_to books_path do %>
                   Xem tất cả sách

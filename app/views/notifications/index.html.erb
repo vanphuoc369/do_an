@@ -1,0 +1,55 @@
+<% if @book.nil? %>
+  <% provide :title, "Chi tiết sách" %>
+<% else %>
+  <% provide :title, @book.title %>
+<% end %>
+<div class="container">
+  <div class="line top">
+    <div>Chi tiết sách</div>
+  </div>
+
+  <div class="row">
+    <% if @book.nil? %>
+      <h6 class="text_title" style="text-align: center;">Không tìm thấy sách</h6>
+    <% else %>
+      <div class="col-6 col-md-4">
+        <%= link_to book_path(@book.id) do %>
+          <%= image_tag @book.image, class: "book_cover_detail", alt: "#{@book.title}" %>
+        <% end %>
+      </div>
+    <div class="col-12 col-md-8">
+      <article class="col-md-12 article-list">
+        <div class="details" style="margin: 0px;">
+          <div class="detail">
+            <div class="category">
+              <a href="javascript:void(0)">Ngày xuất bản:</a>
+            </div>
+            <div class="time"><%= @book.publish_date.strftime("%d/%m/%Y") %></div>
+          </div>
+          <h1><%=link_to @book.title, book_path(@book.id) %></h1>
+          <p><span class="text_title">Tác giả: </span><%= @book.author %></p>
+          <p><span class="text_title">Số trang: </span><%= @book.number_of_pages %></p>
+          <p><span class="text_title">Tóm tắt: </span><%= @book.summary %></p>
+          <hr>
+          <h6>Đánh dấu sách của bạn</h6>
+          <div id="mark_book">
+            <%= render "user_books/mark_book" %>
+          </div>
+        </div>
+      </article>
+    </div>
+    <% end %>
+  </div>
+
+  <div class="line thin"></div>
+
+  <div class="comments">
+    <h4 class="title write_review">Bài đánh giá
+      <%= link_to "Viết bài đánh giá", new_book_review_path(@book.id) %>
+    </h4>
+    <hr>
+    <div class="comment-list" id="show_review">
+      <%= render "reviews/show_review" %>
+    </div>
+  </div>
+</div>

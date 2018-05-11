@@ -33,6 +33,7 @@ en:
   h5_update: "Đã chỉnh sửa %{time} trước"
   h5_create: "Đã đăng %{time} trước"
   hello: "Hello world"
+  notify_time: "%{time} trước"
 
   comments:
     time_update: "Đã chỉnh sửa %{time} trước"

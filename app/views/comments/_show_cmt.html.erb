@@ -1,0 +1,104 @@
+
+<h6>Bình luận về bài đánh giá:</h6>
+<%= link_to book_review_path(@book.id, @review.id), remote: true do %>
+    Hiển thị tất cả các bình luận   <i class="fa fa-angle-down"></i>
+<% end %>
+<div class="height" style="min-height: 18px;"></div>
+<% if @show_cmt_reply %>
+  <% if @comment_replied %>
+    <div id="show_list_cmt">
+      <% user = find_user_review(@comment_replied.user_id) %>
+      <div class="item style_comment" style="padding: 0px; border: none;" id="comment_<%= @comment_replied.id %>">
+        <div class="user cmt">
+          <figure>
+            <%= gravatar_for user %>
+          </figure>
+          <div class="details" style="padding: 0 9px; margin-left: 55px;">
+            <p style="background-color: #dfe1e261; border-radius: 5px; padding: 0 9px;">
+              <span class="name"><%= link_to user.full_name, user_path(@comment_replied.user_id) %></span>
+              <span style="white-space: pre-line"><%= @comment_replied.content %></span>
+            </p>
+            <div class="time">
+              <%= link_to book_review_comment_path(@comment_replied.review.book, @comment_replied.review,@comment_replied.id),
+              remote: true do %>
+                Trả lời   (<%= count_cmt_reply(@comment_replied.id) %>)
+              <% end %>
+              |
+              <% if logged_in? && correct_user_comment?(@comment_replied) %>
+                <span>
+                  <%= link_to "Cập nhập", edit_book_review_comment_path(@comment_replied.review.book, @comment_replied.review, @comment_replied.id),
+                  method: :get, remote: true %>
+                  |
+                  <%= link_to "Xóa", book_review_comment_path(@comment_replied.review.book, @comment_replied.review, @comment_replied.id),
+                  method: :delete, data: {confirm: "Bạn có muốn xóa bình luận này không?"}, remote: true %>
+                  |
+                </span>
+              <% end %>
+              <% if comment_update? @comment_replied %>
+                <%= t "comments.time_update", time: time_ago_in_words(@comment_replied.updated_at) %>
+              <% else %>
+                <%= t "comments.time_create", time: time_ago_in_words(@comment_replied.created_at) %>
+              <% end %>
+
+              <div id="box_reply_cmt_id_<%= @comment_replied.id %>">
+                <%= render "comments/show_reply_cmt" %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+<% else %>
+  <% if @comment %>
+    <div id="show_list_cmt">
+      <% user = find_user_review(@comment.user_id) %>
+      <div class="item style_comment" style="padding: 0px; border: none;" id="comment_<%= @comment.id %>">
+        <div class="user cmt">
+          <figure>
+            <%= gravatar_for user %>
+          </figure>
+          <div class="details" style="padding: 0 9px; margin-left: 55px;">
+            <p style="background-color: #dfe1e261; border-radius: 5px; padding: 0 9px;">
+              <span class="name"><%= link_to user.full_name, user_path(@comment.user_id) %></span>
+              <span style="white-space: pre-line"><%= @comment.content %></span>
+            </p>
+            <div class="time">
+              <%= link_to book_review_comment_path(@comment.review.book, @comment.review,@comment.id),
+              remote: true do %>
+                Trả lời   (<%= count_cmt_reply(@comment.id) %>)
+              <% end %>
+              |
+              <% if logged_in? && correct_user_comment?(@comment) %>
+                <span>
+                  <%= link_to "Cập nhập", edit_book_review_comment_path(@comment.review.book, @comment.review, @comment.id),
+                  method: :get, remote: true %>
+                  |
+                  <%= link_to "Xóa", book_review_comment_path(@comment.review.book, @comment.review, @comment.id),
+                  method: :delete, data: {confirm: "Bạn có muốn xóa bình luận này không?"}, remote: true %>
+                  |
+                </span>
+              <% end %>
+              <% if comment_update? @comment %>
+                <%= t "comments.time_update", time: time_ago_in_words(@comment.updated_at) %>
+              <% else %>
+                <%= t "comments.time_create", time: time_ago_in_words(@comment.created_at) %>
+              <% end %>
+
+              <div id="box_reply_cmt_id_<%= @comment.id %>"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+<% end %>
+<% if logged_in? %>
+  <div id="comment_form">
+    <%= render "comments/comment_form" %>
+  </div>
+<% else %>
+  <footer>
+    <%= link_to "Đăng nhập để bình luận", "#" %>
+  </footer>
+<% end %>

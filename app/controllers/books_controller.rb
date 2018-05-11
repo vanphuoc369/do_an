@@ -2,15 +2,19 @@ class BooksController < ApplicationController
   before_action :find_book, only: :show
 
   def index
-    if params[:search].blank?
-      load_books
+    if params[:request]
+      load_request_books params[:request]
     else
-      search_title_and_author
+      if params[:search].blank?
+        load_books
+      else
+        search_title_and_author
+      end
     end
   end
 
   def book_params
-    params.permit :search
+    params.permit :search, :request
   end
 
   def show
@@ -43,5 +47,31 @@ class BooksController < ApplicationController
     @books = Book.alpha
     @books = collection_paginate @books, params[:page], 5
     @title_index = "Tất cả sách"
+  end
+
+  def load_request_books request
+    if request == "love"
+      @books = Book.favorite_book
+      @title_index = "Sách được ưa thích nhiều nhất"
+    elsif request == "new"
+      @books = Book.new_book
+      @title_index = "Sách mới"
+    elsif request == "read"
+      @books = Book.read_book
+      @title_index = "Sách được đọc nhiều nhất"
+    else
+      if logged_in?
+        if request == "loved"
+          @books = Book.your_favorite_book current_user.id
+          @title_index = "Sách ưa thích của bạn"
+        else
+          @books = Book.your_mark_book current_user.id
+          @title_index = "Sách đã đánh dấu của bạn"
+        end
+      else
+        redirect_back_or root_path
+      end
+    end
+    @books = collection_paginate @books, params[:page], 5
   end
 end
