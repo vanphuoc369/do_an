@@ -1,3 +1,7 @@
+.cke_reset{
+  min-height: 500px;
+}
+
 #show_or_hidden {
   border: none;
   background-color: white;

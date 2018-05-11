@@ -28,11 +28,15 @@
       <ul class="dropdown-menu">
         <li>
           <%= link_to user_path(current_user.id), method: :get do %>
-              <i class="icon ion-person"></i> Thông tin cá nhân
+            Thông tin cá nhân
           <% end %>
         </li>
-        <li><a href="#"><i class="icon ion-heart"></i> Sách yêu thích</a></li>
-        <li><a href="#"><i class="icon ion-chatbox"></i> Sách đã đánh dấu</a></li>
+        <li>
+          <%= link_to "Sách yêu thích", books_path(:request => "loved") %>
+        </li>
+        <li>
+        <%= link_to "Sách đã đánh dấu", books_path(:request => "marked") %>
+        </li>
         <li class="divider"></li>
         <li>
           <%= link_to logout_path, method: :delete do %>

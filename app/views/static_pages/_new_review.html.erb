@@ -1,31 +1,39 @@
-<article class="article-fw">
-  <div class="">
-    <a href="#">
-      <img src="/assets/toi-tai-gioi.jpg" alt="Toi tai gioi" class="book_cover_NewReview">
-    </a>
-    <div class="details">
-      <div class="detail">
-        <div class="time">December 31, 2016</div>
-        <div class="category"><a href="category.html">Sport</a></div>
-      </div>
-      <h1><a href="single.html">Donec congue turpis vitae mauris</a></h1>
-    </div>
-  </div>
-</article>
-<div class="line"></div>
-<article class="article-mini">
-  <div class="row">
-    <div class="col-xs-6 col-sm-3">
-      <a href="single.html">
-        <img src="/assets/img_life_skills.jpg" alt="Ảnh đại diện" class="img_user">
-      </a>
-    </div>
-    <div class="col-xs-9 col-sm-9">
-        <h1><a href="single.html">Duis aute irure dolor in reprehenderit in voluptate velit</a></h1>
+<% if not @newest_review.nil? %>
+  <% user = find_user_review @newest_review.user_id %>
+  <% book = find_book_review @newest_review.book_id %>
+  <article class="article-fw">
+    <div class="">
+      <%= link_to book_path(book.id) do %>
+        <%= image_tag book.image, class: "book_cover_NewReview", alt: "#{book.title}" %>
+      <% end %>
+      <div class="details">
         <div class="detail">
-          <div class="category"><a href="category.html">Lifestyle</a></div>
-          <div class="time">December 22, 2016</div>
+          <div class="time">Ngày phát hành:   <%= book.publish_date.strftime("%d/%m/%Y") %></div>
         </div>
+        <h5>Tiêu đề:
+          <%= link_to book_path(book.id) do %>
+            <%= book.title %>
+          <% end %>
+        </h5>
+      </div>
     </div>
-  </div>
-</article>
+  </article>
+  <div class="line"></div>
+  <%= link_to notifications_path(:review_id => @newest_review.id) do %>
+    <article class="article-mini">
+      <div class="row">
+        <div class="col-xs-6 col-sm-3">
+          <figure style="width: 60px; height: 60px; border-radius: 50%;">
+            <%= gravatar_for user %>
+          </figure>
+        </div>
+        <div class="col-xs-9 col-sm-9">
+            <h1>Được đánh giá bởi <span style="color: blue;"><%= user.full_name %></span></h1>
+            <div class="detail">
+              <span style="color: #8e8787;"><%= t "notify_time", time: time_ago_in_words(@newest_review.created_at) %></span>
+            </div>
+        </div>
+      </div>
+    </article>
+  <% end %>
+<% end %>

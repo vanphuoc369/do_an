@@ -1,44 +1,24 @@
 <div class="comment-list sm">
-  <div class="item">
-    <div class="user">
-      <figure>
-        <img src="images/img01.jpg" alt="User Picture">
-      </figure>
-      <div class="details">
-        <h5 class="name">Mark Otto</h5>
-        <div class="time">24 Hours</div>
-        <div class="description">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+  <% if @new_comments.any? %>
+    <% @new_comments.each do |comment| %>
+      <% user = find_user_comment comment.user_id %>
+      <%= link_to notifications_path(:comment_id => comment.id) do %>
+        <div class="item">
+          <div class="user">
+            <figure>
+              <%= gravatar_for user %>
+            </figure>
+            <div class="details">
+              <h5 class="name"><%= user.full_name %></h5>
+              <div class="time"><%= t "notify_time", time: time_ago_in_words(comment.created_at) %></div>
+              <div class="description" style="color: black;">
+                <%= comment.content %>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-  </div>
-  <div class="item">
-    <div class="user">
-      <figure>
-        <img src="assets/img-welcome.png" alt="User Picture">
-      </figure>
-      <div class="details">
-        <h5 class="name">Mark Otto</h5>
-        <div class="time">24 Hours</div>
-        <div class="description">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="item">
-    <div class="user">
-      <figure>
-        <img src="images/img01.jpg" alt="User Picture">
-      </figure>
-      <div class="details">
-        <h5 class="name">Mark Otto</h5>
-        <div class="time">24 Hours</div>
-        <div class="description">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-        </div>
-      </div>
-    </div>
-  </div>
+      <% end %>
+      <hr>
+    <% end %>
+  <% end %>
 </div>

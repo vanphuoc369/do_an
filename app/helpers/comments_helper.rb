@@ -9,6 +9,11 @@ module CommentsHelper
   end
 
   def count_cmt_reply comment_id
-    @count_reply_comments = Comment.count_cmt_reply(comment_id).size
+    @count_reply_comments = Comment.count_cmt_reply(comment_id).count
+  end
+
+  def find_user_comment user_id
+    user = User.find_by id: user_id
+    return user if user
   end
 end
