@@ -32,7 +32,7 @@
               <%= review.content.html_safe %>
             </div>
             <hr>
-            <div id="show_comments">
+            <div id="show_comments_of_review_id_<%= review.id %>">
               <footer>
                 <%= link_to "Xem các phản hồi", book_review_path(@book.id, review.id), remote: true %>
               </footer>

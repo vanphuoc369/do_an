@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   get "/signup", to: "users#new"
   get "/login", to: "logins#new"
+  get "/static_pages", to: "static_pages#index"
   get "/home_notifications", to: "notifications#home"
   post "/login", to: "logins#create"
   delete "/logout", to: "logins#destroy"
