@@ -1,3 +1,8 @@
+.see_all {
+  text-align: center;
+  padding: 9px;
+}
+
 .cke_reset{
   min-height: 500px;
 }

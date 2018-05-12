@@ -12,7 +12,7 @@ class CommentsController < ApplicationController
     if @comment.content.empty?
       flash.now[:warning] = "Hãy viết suy nghĩ của bạn vào phần nội dung bình luận."
     elsif @review.comments << @comment
-      Activity.create(user_id: current_user.id, type_activity: "comment",
+      @activity = Activity.create(user_id: current_user.id, type_activity: "comment",
         content: "Bạn đã bình luận về bài đánh giá sách", object_id: @comment.id)
       flash.now[:success] = "Đăng bình luận thành công!"
     else
@@ -20,9 +20,43 @@ class CommentsController < ApplicationController
     end
     if params[:comment][:id_comment_reply].nil?
       find_comments params[:review_id]
+      if @comments
+        @report_users = @comments.select(:user_id).distinct
+        @report_users.each do |report_user|
+          if report_user.user_id && (report_user.user_id != current_user.id)
+            user_report = User.find_by id: report_user.user_id
+            if report_user.user_id != @review.user_id
+              Notification.create(user_id: user_report.id, activity_id: @activity.id,
+                content: current_user.full_name + " đã bình luận về bài đánh giá bạn có tham gia trao đổi.")
+            end
+          end
+        end
+      end
+      user_review = User.find_by id: @review.user_id
+      if user_review && (user_review.id != current_user.id)
+        Notification.create(user_id: user_review.id, activity_id: @activity.id,
+          content: current_user.full_name + " đã thêm một bình luận mới về bài đánh giá của bạn.")
+      end
     else
       @id_comment_reply = params[:comment][:id_comment_reply]
+      replied_user_id = (Comment.find_by id: @id_comment_reply).user_id
       find_reply_comments params[:review_id], params[:comment][:id_comment_reply]
+      if @comments
+        @report_users = @comments.select(:user_id).distinct
+        @report_users.each do |report_user|
+          if report_user.user_id && (report_user.user_id != current_user.id)
+            user_report = User.find_by id: report_user.user_id
+            if report_user.user_id != replied_user_id
+              Notification.create(user_id: user_report.id, activity_id: @activity.id,
+                content: current_user.full_name + " đã bình luận về phản hồi của bạn.")
+            end
+          end
+        end
+      end
+      if replied_user_id && (replied_user_id != current_user.id)
+        Notification.create(user_id: replied_user_id, activity_id: @activity.id,
+          content: current_user.full_name + " đã phản hồi bình luận của bạn.")
+      end
     end
     respond_to do |format|
       format.html

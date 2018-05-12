@@ -1,4 +1,10 @@
 <div>
+<% if @book %>
+  <%= link_to book_path(@book.id) do %>
+    Hiển thị tất cả các bài đánh giá   <i class="fa fa-angle-down"></i>
+  <% end %>
+<% end %>
+<div style="min-height: 10px;"></div>
   <% if not @review.nil? %>
     <% user = find_user_review(@review.user_id) %>
     <div class="item">
