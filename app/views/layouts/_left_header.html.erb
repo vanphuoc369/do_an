@@ -4,7 +4,7 @@
       <i class="fa fa-home"></i></a>
     <% end %>
   </li>
-  <li><a href="#">Giới thiệu</a></li>
+  <li><%= link_to "Giới thiệu", static_pages_path(:request => 1) %></li>
 
   <li class="dropdown magz-dropdown magz-dropdown-megamenu">
     <a href="#">Tùy chọn nhanh <div class="badge">Top</div>
@@ -45,24 +45,24 @@
   <li class="dropdown magz-dropdown">
     <a href="#">Trợ giúp <i class="fa fa-angle-down"></i></a>
     <ul class="dropdown-menu">
-      <li><a href="#">Quy định của Website</a></li>
+      <li><%= link_to "Quy định của Website", static_pages_path(:request => 2) %></li>
       <li class="dropdown magz-dropdown">
         <a href="#">Hướng dẫn <i class="ion-ios-arrow-right"></i></a>
         <ul class="dropdown-menu">
-          <li><a href="login.html">Đăng nhập</a></li>
-          <li><a href="register.html">Đăng ký</a></li>
-          <li><a href="forgot.html">Kích hoạt tài khoản</a></li>
-          <li><a href="reset.html">Thiết lập lại mật khẩu</a></li>
+          <li><%= link_to "Đăng nhập", static_pages_path(:request => 3) %></li>
+          <li><%= link_to "Đăng ký", static_pages_path(:request => 4) %></li>
+          <li><%= link_to "Kích hoạt tài khoản", static_pages_path(:request => 5) %></li>
+          <li><%= link_to "Thiết lập lại mật khẩu", static_pages_path(:request => 6) %></li>
         </ul>
       </li>
       <li class="dropdown magz-dropdown">
         <a href="#">Liên hệ <i class="ion-ios-arrow-right"></i></a>
         <ul class="dropdown-menu">
-          <li><a href="403.html">Facebook</a></li>
-          <li><a href="404.html">Twitter</a></li>
-          <li><a href="500.html">Youtube</a></li>
-          <li><a href="503.html">Google Plus</a></li>
-          <li><a href="503.html">Skype</a></li>
+          <li><a href="">Facebook</a></li>
+          <li><a href="">Twitter</a></li>
+          <li><a href="">Youtube</a></li>
+          <li><a href="">Google Plus</a></li>
+          <li><a href="">Skype</a></li>
         </ul>
       </li>
     </ul>
