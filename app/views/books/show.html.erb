@@ -30,6 +30,11 @@
           <p><span class="text_title">Tác giả: </span><%= @book.author %></p>
           <p><span class="text_title">Số trang: </span><%= @book.number_of_pages %></p>
           <p><span class="text_title">Tóm tắt: </span><%= @book.summary %></p>
+          <p><span class="text_title">Lượt thích: </span><%= count_favorite(@book.id) %></p>
+          <% book_star(@book) %>
+          <p><span class="text_title">Điểm đánh giá: </span><span style="color: red;"><%=@average%> </span>/ 5
+          (<span style="color: green;"><%=@count_rate %></span> đánh giá)
+          </p>
           <hr>
           <h6>Đánh dấu sách của bạn</h6>
           <div id="mark_book">

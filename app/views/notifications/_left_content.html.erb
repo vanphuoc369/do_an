@@ -1,0 +1,26 @@
+<div class="col-md-8 col-sm-12 col-xs-12">
+  <div class="line top">
+    <div>Tất cả các thông báo</div>
+  </div>
+  <% if @all_notifications.any? %>
+    <% @all_notifications.each do |notify| %>
+      <div style="padding: 0px 18px;">
+        <%= link_to notifications_path(:activity_id => notify.activity_id, :notify_id => notify.id) do %>
+          <% if notify.is_see == false %>
+            <p style="color: black;"><strong><%= notify.content %></strong></p>
+          <% else %>
+            <p style="color: black;"><%= notify.content %></p>
+          <% end %>
+        <% end %>
+        <div class="detail" style="padding: 0px; margin: 0px;">
+          <div style="color: #bbafaf;"><%= t "notify_time", time: time_ago_in_words(notify.created_at) %></div>
+        </div>
+      </div>
+      <hr>
+    <% end %>
+    <%= will_paginate @all_notifications, id: "paginate" %>
+  <% else %>
+    <p style="color: blue;">Không có thông báo.</p>
+  <% end %>
+
+</div>

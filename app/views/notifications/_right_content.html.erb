@@ -1,0 +1,86 @@
+<div class="col-xs-6 col-md-4">
+  <aside>
+    <h1 class="aside-title">Một số sách được đánh dấu</h1>
+    <ul class="nav nav-tabs nav-justified" role="tablist">
+      <li class="active">
+        <a href="#favorite_books" aria-controls="recomended" role="tab" data-toggle="tab">
+          <i class="fa fa-star"></i> Sách ưa thích
+        </a>
+      </li>
+      <li>
+        <a href="#read_books" aria-controls="comments" role="tab" data-toggle="tab">
+          <i class="fa fa-book"></i> Sách đánh dấu đọc
+        </a>
+      </li>
+    </ul>
+    <div class="tab-content">
+      <div class="tab-pane active" id="favorite_books">
+        <hr>
+        <% if @favorite_books.any? %>
+          <% count = 0 %>
+          <% @favorite_books.each do |book| %>
+            <article class="article-mini">
+              <div class="inner">
+                <figure>
+                  <%= link_to book_path(book.id) do %>
+                    <%= image_tag "/assets/Bat-song-cam-xuc.jpg", class: "book_cover_mini popular", alt: "" %>
+                  <% end %>
+                </figure>
+                <div class="padding">
+                  <%= link_to book_path(book.id) do %>
+                    <h1><%= book.title %></h1>
+                  <% end %>
+                  <p class="author_book_mini">Tác giả: <span><%= book.author %></span></p>
+                  <p style="color: #bbafaf; font-size: 10px;">
+                    Ngày xuất bản: <span><%= book.publish_date.strftime("%d/%m/%Y") %>
+                  </p>
+                </div>
+              </div>
+            </article>
+            <% count += 1 %>
+            <% break if count == 7 %>
+          <% end %>
+          <% if @favorite_books.count > 7 %>
+            <%= link_to "Xem tất cả", books_path(:request => "loved"), class: "see_all" %>
+          <% end %>
+        <% else %>
+          <p>Bạn chưa đánh dấu sách ưa thích.</p>
+        <% end %>
+      </div>
+
+      <div class="tab-pane comments" id="read_books">
+        <hr>
+        <% if @mark_read_books.any? %>
+          <% count = 0 %>
+          <% @mark_read_books.each do |book| %>
+            <article class="article-mini">
+              <div class="inner">
+                <figure>
+                  <%= link_to book_path(book.id) do %>
+                    <%= image_tag "/assets/Bat-song-cam-xuc.jpg", class: "book_cover_mini popular", alt: "" %>
+                  <% end %>
+                </figure>
+                <div class="padding">
+                  <%= link_to book_path(book.id) do %>
+                    <h1><%= book.title %></h1>
+                  <% end %>
+                  <p class="author_book_mini">Tác giả: <span><%= book.author %></span></p>
+                  <p style="color: #bbafaf; font-size: 10px;">
+                    Ngày xuất bản: <span><%= book.publish_date.strftime("%d/%m/%Y") %>
+                  </p>
+                </div>
+              </div>
+            </article>
+            <% count += 1 %>
+            <% break if count == 7 %>
+          <% end %>
+          <% if @mark_read_books.count > 7 %>
+            <%= link_to "Xem tất cả", books_path(:request => "marked"), class: "see_all" %>
+          <% end %>
+        <% else %>
+          <p>Bạn chưa đánh dấu sách đọc.</p>
+        <% end %>
+      </div>
+    </div>
+  </aside>
+</div>

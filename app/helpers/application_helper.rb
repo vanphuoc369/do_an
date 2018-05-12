@@ -32,4 +32,10 @@ module ApplicationHelper
       content_tag :span, nil, class: "fa fa-star-o set_color"
     end
   end
+
+  def find_notifications
+    if logged_in?
+      @new_notifications = Notification.new_notifications @current_user.id
+    end
+  end
 end

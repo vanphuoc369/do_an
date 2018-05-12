@@ -1,29 +1,53 @@
 <ul class="nav-list float_right">
   <% if logged_in? %>
-    <li class="dropdown magz-dropdown magz-dropdown-megamenu"><a href="#"><i class="fa fa-bell"></i> <div class="badge">7</div></a>
-      <div class="dropdown-menu megamenu">
-        <div class="megamenu-inner">
-          <div class="row">
-            <article class="article-mini">
-              <div class="row">
-                <div class="col-xs-6 col-sm-3">
-                  <a href="single.html">
-                    <img src="/assets/img_life_skills.jpg" alt="Ảnh đại diện" class="img_user">
-                  </a>
-                </div>
-                <div class="col-xs-9 col-sm-9">
-                  <h1><a href="single.html">Duis aute irure dolor in reprehenderit in voluptate velit</a></h1>
-                  <div class="detail">
-                    <div class="category"><a href="category.html">Lifestyle</a></div>
-                    <div class="time">December 22, 2016</div>
+    <% if @new_notifications.any? %>
+      <li class="dropdown magz-dropdown magz-dropdown-megamenu">
+        <a href="javascript:avoid(0)"><i class="fa fa-bell"></i>
+          <div class="badge"><%= @new_notifications.count %></div>
+        </a>
+        <div class="dropdown-menu megamenu">
+          <div class="megamenu-inner">
+            <div class="row">
+              <% count = 0 %>
+              <% @new_notifications.each do |notify| %>
+                <article class="article-mini">
+                  <div style="padding: 0px 18px;">
+                    <%= link_to notifications_path(:activity_id => notify.activity_id, :notify_id => notify.id) do %>
+                      <h1><%= notify.content %></h1>
+                    <% end %>
+                    <div class="detail" style="padding: 0px; margin: 0px;">
+                      <div style="color: #bbafaf;"><%= t "notify_time", time: time_ago_in_words(notify.created_at) %></div>
+                    </div>
                   </div>
-                </div>
+                </article>
+                <hr>
+                <% count += 1 %>
+                <% break if count == 5 %>
+              <% end %>
+              <div class="form-group text-right">
+                <%= link_to "Xem tất cả thông báo", home_notifications_path, class: "btn btn-primary btn-block" %>
               </div>
-            </article>
+            </div>
           </div>
         </div>
-      </div>
-    </li>
+      </li>
+    <% else %>
+      <li class="dropdown magz-dropdown magz-dropdown-megamenu">
+        <a href="javascript:avoid(0)"><i class="fa fa-bell"></i>
+          <div class="badge">0</div>
+        </a>
+        <div class="dropdown-menu megamenu">
+          <div class="megamenu-inner">
+            <div class="row" style="padding: 0px 18px;">
+              <b><p style="color: blue; text-align: center;">Bạn không có thông báo mới nào</p></b>
+              <div class="form-group text-right">
+                <%= link_to "Xem tất cả thông báo cũ", home_notifications_path, class: "btn btn-primary btn-block" %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+    <% end %>
     <li class="dropdown magz-dropdown" style="float: right;"><a href="javascript:void(0)"><%= current_user.full_name %><i class="fa fa-angle-down"></i></a>
       <ul class="dropdown-menu">
         <li>
