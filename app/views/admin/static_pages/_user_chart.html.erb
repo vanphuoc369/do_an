@@ -1,0 +1,20 @@
+<% if (@count_user_activated && @count_user_dont_activated) %>
+  <div class="col-md-6">
+    <h6>Biểu đồ thống kê</h6>
+    <div id="piechart"></div>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Task', 'Hours per Day'],
+          ['Đã kích hoạt', <%= @count_user_activated %>],
+          ['Chưa kích hoạt', <%= @count_user_dont_activated %>]
+        ]);
+        var options = {'title':'Biểu đồ thể hiện số người dùng','width':600, 'height':400};
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+        chart.draw(data, options);
+      }
+    </script>
+  </div>
+<% end %>
