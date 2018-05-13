@@ -1,10 +1,14 @@
 <% if logged_in? %>
   <li class="nav-item dropdown">
-    <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#" aria-expanded="false"> <img src="/assets/logo.png" alt="user-img" width="36" class="img-circle"><span ><%= current_user.full_name %></span></span> </a>
+    <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#" aria-expanded="false">
+      <span ><%= current_user.full_name %></span>
+    </a>
     <ul class="dropdown-menu dropdown-user">
       <li>
         <div class="user-box">
-          <div class="u-img"><img src="/assets/logo.png" alt="user"></div>
+          <div class="u-img">
+            <%= gravatar_for current_user %>
+          </div>
           <div class="u-text">
             <h4><%= current_user.full_name %></h4>
             <p class="text-muted"><%= current_user.email %></p>
@@ -14,8 +18,6 @@
           </div>
         </div>
       </li>
-      <div class="dropdown-divider"></div>
-      <a class="dropdown-item icon" href="#"><i class="fa fa-power-off"></i> Đăng xuất</a>
     </ul>
   </li>
 <% end %>

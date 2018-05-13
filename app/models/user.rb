@@ -22,6 +22,8 @@ class User < ApplicationRecord
   validates :password, presence: {accept: true, message: "không được để trống"}, confirmation:{accept: true, message: "không khớp"}
 
   scope :users_activated, ->{where("activated = true")}
+  scope :users_dont_activated, ->{where("activated = false")}
+
   def activate
     update_columns(activated: true, activated_at: Time.zone.now)
   end
