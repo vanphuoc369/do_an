@@ -15,7 +15,7 @@
             <div class="inner">
               <figure>
                     <%= link_to book_path(book.id) do %>
-                      <%= image_tag book.image, class: "book_cover", alt: "#{book.title}" %>
+                      <%= image_tag book.image.url, class: "book_cover", alt: "#{book.title}" %>
                     <% end %>
               </figure>
               <div class="details">

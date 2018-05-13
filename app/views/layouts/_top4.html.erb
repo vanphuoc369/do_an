@@ -9,7 +9,7 @@
           <div class="col-xs-6 col-sm-3">
             <figure>
                   <%= link_to book_path(book.id) do %>
-                    <%= image_tag book.image, class: "book_cover top4", alt: "#{book.title}" %>
+                    <%= image_tag book.image.url, class: "book_cover top4", alt: "#{book.title}" %>
                   <% end %>
             </figure>
             <h6><%= link_to book.title, book_path(book.id) %></h6>

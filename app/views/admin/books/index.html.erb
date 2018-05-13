@@ -1,0 +1,13 @@
+
+<div class="container" style="padding-top: 100px;">
+<p ></p>
+<% if @books.any? %>
+  <% @books.each do |book| %>
+  <div>
+    <%= book.title %>
+    <%= link_to "Xóa", admin_book_path(book.id),
+                    method: :delete, data: {confirm: "Xác nhận"} , class: "btn btn-primary"%>
+  </div>
+  <% end %>
+<% end %>
+</div>

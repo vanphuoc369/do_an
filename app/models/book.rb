@@ -2,7 +2,7 @@ class Book < ApplicationRecord
   has_many :user_books, dependent: :destroy
   has_many :users, through: :user_books
   has_many :reviews, dependent: :destroy
-
+  mount_uploader :image, ImageUploader
   scope :alpha, ->{order updated_at: :desc}
   scope :search_books, ->(text) do
     where("author LIKE ? or title LIKE ?", "%#{text}%", "%#{text}%") if text.present?

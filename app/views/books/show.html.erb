@@ -14,7 +14,7 @@
     <% else %>
       <div class="col-6 col-md-4">
         <%= link_to book_path(@book.id) do %>
-          <%= image_tag @book.image, class: "book_cover_detail", alt: "#{@book.title}" %>
+          <%= image_tag @book.image.url, class: "book_cover_detail", alt: "#{@book.title}" %>
         <% end %>
       </div>
     <div class="col-12 col-md-8">
