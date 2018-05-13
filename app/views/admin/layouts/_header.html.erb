@@ -1,8 +1,8 @@
 <div class="main-header">
   <div class="logo-header">
-    <a href="#" class="logo">
-      Trang chu
-    </a>
+    <%= link_to root_path, class: "logo" do %>
+      Trang chủ
+    <% end %>
     <button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse" data-target="collapse" aria-controls="sidebar" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"><i class="fa fa-align-left"></i></span>
     </button>
@@ -11,7 +11,6 @@
   <nav class="navbar navbar-header navbar-expand-lg">
     <div class="container-fluid">
       <ul class="navbar-nav topbar-nav ml-md-auto align-items-center">
-        <%= render "admin/layouts/box_notify" %>
         <%= render "admin/layouts/box_user" %>
       </ul>
     </div>

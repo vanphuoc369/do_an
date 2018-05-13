@@ -11,4 +11,6 @@ class Review < ApplicationRecord
   scope :find_reviews_to_report, ->(book_id, user_id) do
     where("book_id = ? AND user_id != ?", book_id, user_id) if (book_id.present? && user_id.present?)
   end
+
+  scope :find_reviews_in_year, -> (time_start, time_end) { where(created_at: time_start..time_end) }
 end

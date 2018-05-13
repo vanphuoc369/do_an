@@ -2,28 +2,28 @@
   <div class="scrollbar-inner sidebar-wrapper">
     <ul class="nav">
       <li class="nav-item active">
-        <a href="index.html">
+        <%= link_to admin_root_path() do %>
           <i class="fa fa-table"></i>
           <p>Thống kê</p>
-        </a>
+        <% end %>
       </li>
       <li class="nav-item">
-        <a href="#">
+        <%= link_to "#" do %>
           <i class="fa fa-users"></i>
           <p>Quản lý người dùng</p>
-        </a>
+        <% end %>
       </li>
       <li class="nav-item">
-        <a href="#">
+        <%= link_to "#" do %>
           <i class="fa fa-book"></i>
           <p>Quản lý sách</p>
-        </a>
+        <% end %>
       </li>
       <li class="nav-item">
-        <a href="tables.html">
+        <%= link_to "#" do %>
           <i class="fa fa-star"></i>
           <p>Quản lý bài đánh giá</p>
-        </a>
+        <% end %>
       </li>
     </ul>
   </div>
