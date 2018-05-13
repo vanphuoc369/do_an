@@ -1,0 +1,7 @@
+<div class="container" style="padding-top: 100px;">
+<% unless @review.nil? %>
+  <div>
+    <span style="color: red;"><%= @review.id %>   </span><%= @review.content.html_safe %>
+  </div>
+<% end %>
+</div>

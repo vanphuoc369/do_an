@@ -1,0 +1,49 @@
+<div class="container" style="padding-top: 100px;">
+
+<%= form_for [:admin,@book] do |f| %>
+  <%= render "shared/error_messages", object: @book %>
+  <div class = "form-group">
+    <div class = "col-md-6">
+      <%= f.label :title, "Tiêu đề" %>
+      <%= f.text_field :title, class: "form-control" %>
+    </div>
+  </div>
+  <div class = "form-group">
+    <div class = "col-md-6">
+      <%= f.label :author, "Tác giả" %>
+      <%= f.text_field :author, class: "form-control" %>
+    </div>
+  </div>
+  <div class = "form-group">
+    <div class = "col-md-6">
+      <%= f.label :publish_date, "Ngày xuất bản" %>
+      <%= f.date_field :publish_date, class: "form-control" %>
+    </div>
+  </div>
+  <div class = "form-group">
+    <div class = "col-md-6">
+      <%= f.label :number_of_pages, "Số trang" %>
+      <%= f.number_field :number_of_pages, min: Settings.number_of_pages_min, class: "form-control" %>
+    </div>
+  </div>
+  <div class = "form-group">
+    <div class = "col-md-12">
+      <%= f.label :summary, "Tóm tắt nội dung" %>
+      <%= f.cktext_area :summary, cols: 40, class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class = "col-md-6">
+    <%= f.label :image, "Trang bìa" %>
+      <%= f.file_field :image, accept: "image/jpeg,image/gif,image/png", class: "form-control" %>
+    </div>
+  </div>
+  <div class = "form-group">
+    <div class = "col-md-6">
+      <%= f.submit "Cập nhật",class: "btn btn-primary" %>
+    </div>
+  </div>
+<% end %>
+
+
+</div>
