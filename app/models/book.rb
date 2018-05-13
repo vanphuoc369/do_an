@@ -3,6 +3,13 @@ class Book < ApplicationRecord
   has_many :users, through: :user_books
   has_many :reviews, dependent: :destroy
   mount_uploader :image, ImageUploader
+
+  validates :title, presence: {accept: true, message: "không được để trống"}
+  validates :author, presence: {accept: true, message: "không được để trống"}
+  validates :number_of_pages, numericality: {greater_than: 0, only_integer: true, message: "phải là một số nguyên dương"}
+  validates :publish_date, presence: {accept: true, message: "không được để trống"}
+  validates :summary, presence: {accept: true, message: "không được để trống"}
+
   scope :alpha, ->{order updated_at: :desc}
   scope :search_books, ->(text) do
     where("author LIKE ? or title LIKE ?", "%#{text}%", "%#{text}%") if text.present?

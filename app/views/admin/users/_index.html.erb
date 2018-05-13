@@ -2,10 +2,10 @@
   <div class="page-content">
     <div class="page-header" style="margin-top: 0px;">
       <h4>
-        Tất cả sách trong hệ thống
+        Danh sách người dùng
       </h4>
-      <%= link_to new_admin_book_path do %>
-        <button type="button" class="btn btn-info">Thêm sách mới</button>
+      <%= link_to new_admin_user_path, remote: true do %>
+        <button type="button" class="btn btn-info">Thêm người dùng</button>
       <% end %>
     </div>
     <div class="row">
@@ -17,35 +17,36 @@
           </div>
         <% end %>
         <div class="row content">
-          <% if @books.any? %>
-            <table id="table_books" class="table table-striped" style="width:100%">
+          <% if @users.any? %>
+            <table id="table_users" class="table table-striped" style="width:100%">
               <thead>
                   <tr>
-                      <th>Id sách</th>
-                      <th>Tiêu đề</th>
-                      <th>Tác giả</th>
-                      <th>Số trang</th>
+                      <th>Id người dùng</th>
+                      <th>Họ tên</th>
+                      <th>Email</th>
+                      <th>Kích hoạt</th>
                       <th>Ngày tạo</th>
                       <th style="text-align: center;">Thao tác</th>
                   </tr>
               </thead>
               <tbody>
-                <% @books.each do |book| %>
+                <% @users.each do |user| %>
                   <tr>
-                    <td><%= book.id %></td>
+                    <td><%= user.id %></td>
                     <td>
-                      <%= link_to book_path(book.id) do %>
-                        <%= book.title %>
+                      <%= link_to user_path(user.id) do %>
+                        <%= user.full_name %>
                       <% end %>
                     </td>
-                    <td><%= book.author %></td>
-                    <td><%= book.number_of_pages %></td>
-                    <td><%= book.created_at.strftime("%d/%m/%Y") %></td>
+                    <td><%= user.email %></td>
+                    <td><%= user.activated %></td>
+                    <td><%= user.created_at.strftime("%d/%m/%Y") %></td>
                     <td class="center">
-                      <%= link_to edit_admin_book_path(book.id), class: "action_manage edit", title: "Cập nhật" do %>
+                      <%= link_to edit_admin_user_path(user.id), class: "action_manage edit", remote: true, title: "Cập nhật" do %>
                         <i class="fa fa-pencil" aria-hidden="true" style="color: green;"></i>
                       <% end %>
-                      <%= link_to admin_book_path(book.id), method: :delete, data: {confirm: "Bạn có muốn xóa cuốn sách này không ?"},
+                      <%= link_to admin_user_path(user.id), method: :delete, remote: true,
+                        data: {confirm: "Bạn có muốn xóa tài khoản này không?"},
                         class: "action_manage delete", title: "Xóa" do %>
                         <i class="fa fa-times-circle" aria-hidden="true" style="color: red;"></i>
                       <% end %>
@@ -56,7 +57,7 @@
             </table>
             <script type="text/javascript">
               $(document).ready(function() {
-                $('#table_books').DataTable();
+                $('#table_users').DataTable();
               } );
             </script>
           <% else %>
@@ -67,4 +68,3 @@
     </div>
   </div>
 </div>
-

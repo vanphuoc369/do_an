@@ -27,7 +27,9 @@
                 </div>
                 <h1><%=link_to book.title, book_path(book.id) %></h1>
                 <p><span class="text_title">Tác giả: </span><%= book.author %></p>
-                <p><span class="text_title">Tóm tắt: </span><%= book.summary %></p>
+                <p><span class="text_title">Tóm tắt: </span>
+                <span style="white-space: pre-line"><%= book.summary %></span>
+                </p>
                 <p><span class="text_title">Lượt thích: </span><%= count_favorite(book.id) %></p>
                 <% book_star(book) %>
                 <p><span class="text_title">Điểm đánh giá: </span><span style="color: red;"><%=@average%> </span>/ 5

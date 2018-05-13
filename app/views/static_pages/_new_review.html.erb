@@ -4,7 +4,7 @@
   <article class="article-fw">
     <div class="">
       <%= link_to book_path(book.id) do %>
-        <%= image_tag book.image, class: "book_cover_NewReview", alt: "#{book.title}" %>
+        <%= image_tag book.image.url, class: "book_cover_NewReview", alt: "#{book.title}" %>
       <% end %>
       <div class="details">
         <div class="detail">

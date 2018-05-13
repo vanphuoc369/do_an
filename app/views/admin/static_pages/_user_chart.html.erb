@@ -11,7 +11,7 @@
           ['Đã kích hoạt', <%= @count_user_activated %>],
           ['Chưa kích hoạt', <%= @count_user_dont_activated %>]
         ]);
-        var options = {'title':'Biểu đồ thể hiện số người dùng','width':600, 'height':400};
+        var options = {'title':'Biểu đồ thể hiện số người dùng','width':800, 'height':600};
         var chart = new google.visualization.PieChart(document.getElementById('piechart'));
         chart.draw(data, options);
       }

@@ -1,114 +1,104 @@
 <% provide :title, "Trang chủ" %>
-<div class="container" style="padding-top: 100px;">
-  <h6>Các con số thống kê</h6>
-  <div class="row">
-    <div class="col-md-3">
-      <div class="card card-stats card-warning">
-        <div class="card-body ">
-          <div class="row">
-            <div class="col-5">
-              <div class="icon-big text-center">
-                <i class="fa fa-users"></i>
+
+<div class="main-content-inner">
+  <div class="page-content">
+    <div class="page-header" style="margin-top: 0px;">
+      <h4>
+        Thống kê
+      </h4>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <% flash.each do |mesage_type, mesage| %>
+          <div class="alert alert-<%= mesage_type %> alert-dismissible fade in" style="padding-top: 189px;">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <strong>Thông báo:     </strong><%= mesage %>
+          </div>
+        <% end %>
+        <div class="row content">
+          <div class="col-xs-6 col-md-3" style="background-color: lightgreen; padding: 10px;">
+            <div class="info-box">
+              <div class="col-md-4">
+                <span class="info-box-icon bg-red"><i class="fa fa-users" style="font-size: 40px; padding: 10%;"></i></span>
+              </div>
+              <div class="col-md-8">
+                <div class="info-box-content">
+                  <h6 class="info-box-text">Người dùng</h6>
+                  <h4 class="info-box-number">
+                    <% if @count_users %>
+                      <%= @count_users %>
+                    <% else %>
+                      0
+                    <% end %>
+                  </h4>
+                </div>
               </div>
             </div>
-            <div class="col-7 d-flex align-items-center">
-              <div class="numbers">
-                <p class="card-category">Người dùng</p>
-                <h4 class="card-title">
-                  <% if @count_users %>
-                    <%= @count_users %>
-                  <% else %>
-                    0
-                  <% end %>
-                </h4>
+          </div>
+          <div class="col-xs-6 col-md-3" style="background-color: orange; padding: 10px;">
+            <div class="info-box">
+              <div class="col-md-4">
+                <span class="info-box-icon bg-red"><i class="fa fa-book" style="font-size: 40px; padding: 10%;"></i></span>
+              </div>
+              <div class="col-md-8">
+                <div class="info-box-content">
+                  <h6 class="info-box-text">Sách</h6>
+                  <h4 class="info-box-number">
+                    <% if @count_books %>
+                      <%= @count_books %>
+                    <% else %>
+                      0
+                    <% end %>
+                  </h4>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-6 col-md-3" style="background-color: lightblue; padding: 10px;">
+            <div class="info-box">
+              <div class="col-md-4">
+                <span class="info-box-icon bg-red"><i class="fa fa-pencil" style="font-size: 40px; padding: 10%;"></i></span>
+              </div>
+              <div class="col-md-8">
+                <div class="info-box-content">
+                  <h6 class="info-box-text">Đánh giá</h6>
+                  <h4 class="info-box-number">
+                    <% if @count_reviews %>
+                      <%= @count_reviews %>
+                    <% else %>
+                      0
+                    <% end %>
+                  </h4>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-6 col-md-3" style="background-color: lightpink; padding: 10px;">
+            <div class="info-box">
+              <div class="col-md-4">
+                <span class="info-box-icon bg-red"><i class="fa fa-comments" style="font-size: 40px; padding: 10%;"></i></span>
+              </div>
+              <div class="col-md-8">
+                <div class="info-box-content">
+                  <h6 class="info-box-text">Bình luận</h6>
+                  <h4 class="info-box-number">
+                    <% if @count_comments %>
+                      <%= @count_comments %>
+                    <% else %>
+                      0
+                    <% end %>
+                  </h4>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </div>
-
-    <div class="col-md-3">
-      <div class="card card-stats card-success">
-        <div class="card-body ">
-          <div class="row">
-            <div class="col-5">
-              <div class="icon-big text-center">
-                <i class="fa fa-book"></i>
-              </div>
-            </div>
-            <div class="col-7 d-flex align-items-center">
-              <div class="numbers">
-                <p class="card-category">Sách</p>
-                <h4 class="card-title">
-                  <% if @count_books %>
-                    <%= @count_books %>
-                  <% else %>
-                    0
-                  <% end %>
-                </h4>
-              </div>
-            </div>
-          </div>
+        <div style="padding-bottom: 45px;"></div>
+        <div class="row content">
+          <%= render "admin/static_pages/user_chart" %>
+          <%= render "admin/static_pages/review_colunm_chart" %>
         </div>
       </div>
     </div>
-
-    <div class="col-md-3">
-      <div class="card card-stats card-danger">
-        <div class="card-body">
-          <div class="row">
-            <div class="col-5">
-              <div class="icon-big text-center">
-                <i class="fa fa-pencil"></i>
-              </div>
-            </div>
-            <div class="col-7 d-flex align-items-center">
-              <div class="numbers">
-                <p class="card-category">Đánh giá</p>
-                <h4 class="card-title">
-                  <% if @count_reviews %>
-                    <%= @count_reviews %>
-                  <% else %>
-                    0
-                  <% end %>
-                </h4>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-md-3">
-      <div class="card card-stats card-primary">
-        <div class="card-body ">
-          <div class="row">
-            <div class="col-5">
-              <div class="icon-big text-center">
-                <i class="fa fa-comments"></i>
-              </div>
-            </div>
-            <div class="col-7 d-flex align-items-center">
-              <div class="numbers">
-                <p class="card-category">Bình luận</p>
-                <h4 class="card-title">
-                  <% if @count_comments %>
-                    <%= @count_comments %>
-                  <% else %>
-                    0
-                  <% end %>
-                </h4>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="row" style="padding-top: 54px;">
-    <%= render "admin/static_pages/user_chart" %>
-    <%= render "admin/static_pages/review_colunm_chart" %>
   </div>
 </div>

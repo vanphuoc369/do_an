@@ -1,0 +1,11 @@
+.img_header img{
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+.row.content{
+  padding: 0px 11px;
+}
+.set_color{
+  color: orange;
+}

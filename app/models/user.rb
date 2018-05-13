@@ -23,6 +23,7 @@ class User < ApplicationRecord
 
   scope :users_activated, ->{where("activated = true")}
   scope :users_dont_activated, ->{where("activated = false")}
+  scope :all_users, ->{where("is_admin = false")}
 
   def activate
     update_columns(activated: true, activated_at: Time.zone.now)

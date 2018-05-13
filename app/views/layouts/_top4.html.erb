@@ -13,7 +13,7 @@
                   <% end %>
             </figure>
             <h6><%= link_to book.title, book_path(book.id) %></h6>
-            <p><%= book.summary %></p>
+            <p><span style="white-space: pre-line"><%= book.summary %></span></p>
           </div>
         <% end %>
       <% end %>

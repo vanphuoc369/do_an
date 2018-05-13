@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
     before_action :load_user, only: [:show, :update, :edit]
     before_action :check_user_logged, only: :new
-
   def new
     @user = User.new
   end

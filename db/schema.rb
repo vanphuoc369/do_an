@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 20180506083004) do
 
-  create_table "activities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "activities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.bigint "user_id"
     t.string "type_activity"
     t.string "content"
@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 20180506083004) do
     t.index ["user_id"], name: "index_activities_on_user_id"
   end
 
-  create_table "books", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "books", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "title"
     t.string "author"
     t.datetime "publish_date"
@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 20180506083004) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "buy_requests", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "buy_requests", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.bigint "user_id"
     t.string "title"
     t.string "author"
@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(version: 20180506083004) do
     t.index ["user_id"], name: "index_buy_requests_on_user_id"
   end
 
-  create_table "ckeditor_assets", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "ckeditor_assets", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "data_file_name", null: false
     t.string "data_content_type"
     t.integer "data_file_size"
@@ -55,7 +55,7 @@ ActiveRecord::Schema.define(version: 20180506083004) do
     t.index ["type"], name: "index_ckeditor_assets_on_type"
   end
 
-  create_table "comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.bigint "user_id"
     t.bigint "review_id"
     t.string "content"
@@ -66,7 +66,7 @@ ActiveRecord::Schema.define(version: 20180506083004) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
-  create_table "likes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "likes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.bigint "user_id"
     t.bigint "activity_id"
     t.datetime "created_at", null: false
@@ -75,7 +75,7 @@ ActiveRecord::Schema.define(version: 20180506083004) do
     t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
-  create_table "notifications", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "notifications", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.bigint "user_id"
     t.bigint "activity_id"
     t.boolean "is_see", default: false
@@ -86,7 +86,7 @@ ActiveRecord::Schema.define(version: 20180506083004) do
     t.index ["user_id"], name: "index_notifications_on_user_id"
   end
 
-  create_table "reviews", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "reviews", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.bigint "user_id"
     t.bigint "book_id"
     t.text "content"
@@ -97,7 +97,7 @@ ActiveRecord::Schema.define(version: 20180506083004) do
     t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
-  create_table "user_books", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "user_books", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.bigint "user_id"
     t.bigint "book_id"
     t.boolean "is_favorite", default: false
@@ -108,7 +108,7 @@ ActiveRecord::Schema.define(version: 20180506083004) do
     t.index ["user_id"], name: "index_user_books_on_user_id"
   end
 
-  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "full_name"
     t.string "email"
     t.string "remember_digest"
