@@ -20,7 +20,7 @@ module Admin
         (1..12).each do |i|
           count = 0
           @reviews.each do |review|
-            count += 1 if (review.created_at.month == i)
+            count += 1 if (review.created_at.month == i && review.created_at.year == @year)
           end
           @result_array << count
         end

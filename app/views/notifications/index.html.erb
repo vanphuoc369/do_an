@@ -29,7 +29,7 @@
           <h1><%=link_to @book.title, book_path(@book.id) %></h1>
           <p><span class="text_title">Tác giả: </span><%= @book.author %></p>
           <p><span class="text_title">Số trang: </span><%= @book.number_of_pages %></p>
-          <p><span class="text_title">Tóm tắt: </span><%= @book.summary %></p>
+          <p><span class="text_title">Tóm tắt: </span><%= @book.summary.html_safe %></p>
           <hr>
           <h6>Đánh dấu sách của bạn</h6>
           <div id="mark_book">

@@ -1,30 +1,31 @@
-<div class="sidebar">
-  <div class="scrollbar-inner sidebar-wrapper">
-    <ul class="nav">
-      <li class="nav-item active">
-        <%= link_to admin_root_path() do %>
-          <i class="fa fa-table"></i>
-          <p>Thống kê</p>
-        <% end %>
-      </li>
-      <li class="nav-item">
-        <%= link_to "#" do %>
-          <i class="fa fa-users"></i>
-          <p>Quản lý người dùng</p>
-        <% end %>
-      </li>
-      <li class="nav-item">
-        <%= link_to admin_books_path do %>
-          <i class="fa fa-book"></i>
-          <p>Quản lý sách</p>
-        <% end %>
-      </li>
-      <li class="nav-item">
-        <%= link_to "#" do %>
-          <i class="fa fa-star"></i>
-          <p>Quản lý bài đánh giá</p>
-        <% end %>
-      </li>
-    </ul>
+<div id="sidebar" class="sidebar responsive ace-save-state">
+  <ul class="nav nav-list" id="ul_sidebar">
+    <li class="">
+      <%= link_to admin_root_path() do %>
+        <i class="menu-icon fa fa-table"></i>
+        <span class="menu-text"> Thống kê </span>
+      <% end %>
+    </li>
+    <li class="">
+      <%= link_to admin_users_path(), remote: true do %>
+        <i class="menu-icon fa fa-users"></i>
+        <span class="menu-text"> Quản lý người dùng </span>
+      <% end %>
+    </li>
+    <li class="">
+      <%= link_to admin_books_path do %>
+        <i class="menu-icon fa fa-book"></i>
+        <span class="menu-text"> Quản lý sách </span>
+      <% end %>
+    </li>
+    <li class="">
+      <%= link_to admin_reviews_path(), remote: true do %>
+        <i class="menu-icon fa fa-pencil"></i>
+        <span class="menu-text"> Quản lý đánh giá </span>
+      <% end %>
+    </li>
+  </ul>
+  <div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
+    <i id="sidebar-toggle-icon" class="ace-icon fa fa-angle-double-left ace-save-state" data-icon1="ace-icon fa fa-angle-double-left" data-icon2="ace-icon fa fa-angle-double-right"></i>
   </div>
 </div>

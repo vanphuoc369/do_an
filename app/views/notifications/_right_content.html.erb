@@ -23,7 +23,7 @@
               <div class="inner">
                 <figure>
                   <%= link_to book_path(book.id) do %>
-                    <%= image_tag "/assets/Bat-song-cam-xuc.jpg", class: "book_cover_mini popular", alt: "" %>
+                    <%= image_tag book.image.url, class: "book_cover_mini popular", alt: "#{book.title}" %>
                   <% end %>
                 </figure>
                 <div class="padding">
@@ -57,7 +57,7 @@
               <div class="inner">
                 <figure>
                   <%= link_to book_path(book.id) do %>
-                    <%= image_tag "/assets/Bat-song-cam-xuc.jpg", class: "book_cover_mini popular", alt: "" %>
+                    <%= image_tag book.image.url, class: "book_cover_mini popular", alt: "#{book.title}" %>
                   <% end %>
                 </figure>
                 <div class="padding">

@@ -13,7 +13,7 @@ module Admin
     def create
       @book = Book.new book_params
       if @book.save
-        flash[:success] = "Them sach thanh cong"
+        flash[:success] = "Thêm sách mới thành công"
         redirect_to admin_books_path
       else
         render :new
@@ -24,7 +24,7 @@ module Admin
 
     def update
       if @book.update_attributes book_params
-        flash[:sucess] = "Cap nhat thanh cong"
+        flash[:sucess] = "Cập nhật sách thành công"
         redirect_to admin_books_path
       else
         render :edit
@@ -33,9 +33,9 @@ module Admin
 
     def destroy
       if @book.destroy
-        flash[:success] = "Xoa thanh cong"
+        flash[:success] = "Xóa sách thành công"
       else
-        flash[:danger] = "Xoa khong thanh cong"
+        flash[:danger] = "Xóa sách không thành công"
       end
       redirect_to admin_books_path
     end
@@ -47,10 +47,9 @@ module Admin
     end
 
     def find_book
-      debugger
       @book = Book.find_by id: params[:id]
       return if @book
-      flash[:danger] = "Khong tim thay sach"
+      flash[:danger] = "Không tìm thấy sách"
       redirect_to admin_books_path
     end
   end

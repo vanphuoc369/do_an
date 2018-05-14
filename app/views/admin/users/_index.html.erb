@@ -1,0 +1,70 @@
+<div class="main-content-inner">
+  <div class="page-content">
+    <div class="page-header" style="margin-top: 0px;">
+      <h4>
+        Danh sách người dùng
+      </h4>
+      <%= link_to new_admin_user_path, remote: true do %>
+        <button type="button" class="btn btn-info">Thêm người dùng</button>
+      <% end %>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <% flash.each do |mesage_type, mesage| %>
+          <div class="alert alert-<%= mesage_type %> alert-dismissible fade in">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <strong>Thông báo:     </strong><%= mesage %>
+          </div>
+        <% end %>
+        <div class="row content">
+          <% if @users.any? %>
+            <table id="table_users" class="table table-striped" style="width:100%">
+              <thead>
+                  <tr>
+                      <th>Id người dùng</th>
+                      <th>Họ tên</th>
+                      <th>Email</th>
+                      <th>Kích hoạt</th>
+                      <th>Ngày tạo</th>
+                      <th style="text-align: center;">Thao tác</th>
+                  </tr>
+              </thead>
+              <tbody>
+                <% @users.each do |user| %>
+                  <tr>
+                    <td><%= user.id %></td>
+                    <td>
+                      <%= link_to user_path(user.id) do %>
+                        <%= user.full_name %>
+                      <% end %>
+                    </td>
+                    <td><%= user.email %></td>
+                    <td><%= user.activated %></td>
+                    <td><%= user.created_at.strftime("%d/%m/%Y") %></td>
+                    <td class="center">
+                      <%= link_to edit_admin_user_path(user.id), class: "action_manage edit", remote: true, title: "Cập nhật" do %>
+                        <i class="fa fa-pencil" aria-hidden="true" style="color: green;"></i>
+                      <% end %>
+                      <%= link_to admin_user_path(user.id), method: :delete, remote: true,
+                        data: {confirm: "Bạn có muốn xóa tài khoản này không?"},
+                        class: "action_manage delete", title: "Xóa" do %>
+                        <i class="fa fa-times-circle" aria-hidden="true" style="color: red;"></i>
+                      <% end %>
+                    </td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+            <script type="text/javascript">
+              $(document).ready(function() {
+                $('#table_users').DataTable();
+              } );
+            </script>
+          <% else %>
+            <p class="notify">Không có dữ liệu</p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

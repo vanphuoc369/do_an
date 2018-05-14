@@ -94,3 +94,9 @@ en:
         email: "Địa chỉ email"
         password: "Mật khẩu"
         password_confirmation: "Mật khẩu xác nhận"
+      book:
+        title: "Tiêu đề sách"
+        author: "Tác giả"
+        number_of_pages: "Số trang"
+        publish_date: "Ngày xuất bản"
+        summary: "Nội dung tóm tắt"

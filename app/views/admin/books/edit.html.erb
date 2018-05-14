@@ -1,49 +1,48 @@
-<div class="container" style="padding-top: 100px;">
+<div class="container" style="padding-top: 89px;">
+  <div class="box-wrapper">
+    <div class="box box-border">
+      <div class="box-body">
+        <h4>Cập nhật thông tin sách</h4>
+        <%= form_for [:admin,@book] do |f| %>
+          <hr>
+          <%= render "shared/error_messages", object: f.object %>
 
-<%= form_for [:admin,@book] do |f| %>
-  <%= render "shared/error_messages", object: @book %>
-  <div class = "form-group">
-    <div class = "col-md-6">
-      <%= f.label :title, "Tiêu đề" %>
-      <%= f.text_field :title, class: "form-control" %>
+          <div class="form-group">
+            <%= f.label :title, "Tiêu đề sách" %>
+            <%= f.text_field :title, placeholder: "Nhập tên tiêu đề sách ...", class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :author, "Tác giả" %>
+            <%= f.text_field :author, placeholder: "Nhập tên tác giả của sách ...", class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :publish_date, "Ngày xuất bản" %>
+            <%= f.date_field :publish_date, class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :number_of_pages, "Số trang" %>
+            <%= f.number_field :number_of_pages, min: 1, class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :image, "Ảnh bìa" %>
+            <%= f.file_field :image, accept: "image/jpeg,image/gif,image/png", class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :summary, "Nội dung tóm tắt" %>
+            <%= f.text_area :summary, id: "summary_book", placeholder: "Nhập nội dung tóm tắt của sách ...", class: "form-control" %>
+          </div>
+          <div class="form-group text-right">
+            <%= f.submit "Thêm sách mới", class: "btn btn-primary btn-block" %>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
-  <div class = "form-group">
-    <div class = "col-md-6">
-      <%= f.label :author, "Tác giả" %>
-      <%= f.text_field :author, class: "form-control" %>
-    </div>
-  </div>
-  <div class = "form-group">
-    <div class = "col-md-6">
-      <%= f.label :publish_date, "Ngày xuất bản" %>
-      <%= f.date_field :publish_date, class: "form-control" %>
-    </div>
-  </div>
-  <div class = "form-group">
-    <div class = "col-md-6">
-      <%= f.label :number_of_pages, "Số trang" %>
-      <%= f.number_field :number_of_pages, min: Settings.number_of_pages_min, class: "form-control" %>
-    </div>
-  </div>
-  <div class = "form-group">
-    <div class = "col-md-12">
-      <%= f.label :summary, "Tóm tắt nội dung" %>
-      <%= f.cktext_area :summary, cols: 40, class: "form-control" %>
-    </div>
-  </div>
-  <div class="form-group">
-    <div class = "col-md-6">
-    <%= f.label :image, "Trang bìa" %>
-      <%= f.file_field :image, accept: "image/jpeg,image/gif,image/png", class: "form-control" %>
-    </div>
-  </div>
-  <div class = "form-group">
-    <div class = "col-md-6">
-      <%= f.submit "Cập nhật",class: "btn btn-primary" %>
-    </div>
-  </div>
-<% end %>
-
-
 </div>
+<script type="text/javascript">
+  $("#summary_book").on('input', function() {
+    var scroll_height = $("#summary_book").get(0).scrollHeight;
+
+    $("#summary_book").css('height', scroll_height + 'px');
+  });
+</script>

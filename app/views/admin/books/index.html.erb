@@ -1,13 +1,70 @@
-
-<div class="container" style="padding-top: 100px;">
-<p ></p>
-<% if @books.any? %>
-  <% @books.each do |book| %>
-  <div>
-    <%= book.title %>
-    <%= link_to "Xóa", admin_book_path(book.id),
-                    method: :delete, data: {confirm: "Xác nhận"} , class: "btn btn-primary"%>
+<div class="main-content-inner">
+  <div class="page-content">
+    <div class="page-header" style="margin-top: 0px;">
+      <h4>
+        Tất cả sách trong hệ thống
+      </h4>
+      <%= link_to new_admin_book_path do %>
+        <button type="button" class="btn btn-info">Thêm sách mới</button>
+      <% end %>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <% flash.each do |mesage_type, mesage| %>
+          <div class="alert alert-<%= mesage_type %> alert-dismissible fade in">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <strong>Thông báo:     </strong><%= mesage %>
+          </div>
+        <% end %>
+        <div class="row content">
+          <% if @books.any? %>
+            <table id="table_books" class="table table-striped" style="width:100%">
+              <thead>
+                  <tr>
+                      <th>Id sách</th>
+                      <th>Tiêu đề</th>
+                      <th>Tác giả</th>
+                      <th>Số trang</th>
+                      <th>Ngày tạo</th>
+                      <th style="text-align: center;">Thao tác</th>
+                  </tr>
+              </thead>
+              <tbody>
+                <% @books.each do |book| %>
+                  <tr>
+                    <td><%= book.id %></td>
+                    <td>
+                      <%= link_to book_path(book.id) do %>
+                        <%= book.title %>
+                      <% end %>
+                    </td>
+                    <td><%= book.author %></td>
+                    <td><%= book.number_of_pages %></td>
+                    <td><%= book.created_at.strftime("%d/%m/%Y") %></td>
+                    <td class="center">
+                      <%= link_to edit_admin_book_path(book.id), class: "action_manage edit", title: "Cập nhật" do %>
+                        <i class="fa fa-pencil" aria-hidden="true" style="color: green;"></i>
+                      <% end %>
+                      <%= link_to admin_book_path(book.id), method: :delete, data: {confirm: "Bạn có muốn xóa cuốn sách này không ?"},
+                        class: "action_manage delete", title: "Xóa" do %>
+                        <i class="fa fa-times-circle" aria-hidden="true" style="color: red;"></i>
+                      <% end %>
+                    </td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+            <script type="text/javascript">
+              $(document).ready(function() {
+                $('#table_books').DataTable();
+              } );
+            </script>
+          <% else %>
+            <p class="notify">Không có dữ liệu</p>
+          <% end %>
+        </div>
+      </div>
+    </div>
   </div>
-  <% end %>
-<% end %>
 </div>
+

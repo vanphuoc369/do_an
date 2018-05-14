@@ -1,0 +1,80 @@
+<div class="main-content-inner">
+  <div class="page-content">
+    <div class="page-header" style="margin-top: 0px;">
+      <h4>
+        Danh sách bài đánh giá
+      </h4>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <% flash.each do |mesage_type, mesage| %>
+          <div class="alert alert-<%= mesage_type %> alert-dismissible fade in">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <strong>Thông báo:     </strong><%= mesage %>
+          </div>
+        <% end %>
+        <div class="row content">
+          <% if @reviews.any? %>
+            <table id="table_users" class="table table-striped" style="width:100%">
+              <thead>
+                  <tr>
+                      <th>Người đánh giá</th>
+                      <th>Sách được đánh giá</th>
+                      <th>Ngày đánh giá</th>
+                      <th style="text-align: center;">Hiển thị đánh giá</th>
+                      <th style="text-align: center;">Xóa bài đánh giá</th>
+                  </tr>
+              </thead>
+              <tbody>
+                <% @reviews.each do |review| %>
+                  <tr>
+                    <td>
+                      <% user = find_user_review(review.id) %>
+                      <% if user %>
+                        <%= link_to user_path(user.id) do %>
+                          <%= user.full_name %>
+                        <% end %>
+                      <% else %>
+                        Tên không xác định
+                      <% end %>
+                    </td>
+                    <td>
+                      <% book = find_book_for_review(review.id) %>
+                      <% if book %>
+                        <%= link_to book_path(book.id) do %>
+                          <%= book.title %>
+                        <% end %>
+                      <% else %>
+                        Tên sách không xác định
+                      <% end %>
+                    </td>
+                    <td><%= review.created_at.strftime("%d/%m/%Y") %></td>
+                    <td class="center">
+                      <%= link_to admin_review_path(review.id), class: "action_manage edit",remote: true, title: "Xem" do %>
+                        <i class="fa fa-eye" aria-hidden="true" style="color: green;"></i>
+                      <% end %>
+                    </td>
+                    <td class="center">
+                      <%= link_to admin_review_path(review.id), method: :delete, remote: true,
+                        data: {confirm: "Bạn có muốn xóa bài đánh giá này không?"},
+                        class: "action_manage delete", title: "Xóa" do %>
+                        <i class="fa fa-times-circle" aria-hidden="true" style="color: red;"></i>
+                      <% end %>
+                    </td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+            <script type="text/javascript">
+              $(document).ready(function() {
+                $('#table_users').DataTable();
+              } );
+            </script>
+          <% else %>
+            <p class="notify">Không có dữ liệu</p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

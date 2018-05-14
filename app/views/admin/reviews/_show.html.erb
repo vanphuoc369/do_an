@@ -1,0 +1,30 @@
+<div class="main-content-inner">
+  <div class="page-content">
+    <div class="page-header" style="margin-top: 0px;">
+      <h4>
+        Nội dung bài đánh giá
+      </h4>
+      <% unless @review.nil? %>
+        <%= link_to notifications_path(:review_id => @review.id) do %>
+          <button type="button" class="btn btn-info">Xem các bình luận</button>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="row content">
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <% unless @review.nil? %>
+                <span style="color: blue;">Nội dung:   </span><%= @review.content.html_safe %>
+                <span style="color: blue;">Đánh giá sao:   </span><%= load_star_rating(@review.rate) %>
+              <% else %>
+                <p class="notify">Không có dữ liệu</p>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
